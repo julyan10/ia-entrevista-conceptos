@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conceptos IA para entrevistas</title>
+    <meta
+      name="description"
+      content="Página interactiva para repasar conceptos de IA, RAG, agentes, bases de datos y seguridad antes de entrevistas."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <nav class="topbar" aria-label="Navegación principal">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+          <span class="brand-mark">IA</span>
+          <span>Entrevista</span>
+        </a>
+        <div class="nav-actions">
+          <button class="icon-button" id="themeToggle" type="button" aria-label="Cambiar tema" title="Cambiar tema">
+            ◐
+          </button>
+          <a class="nav-link" href="#conceptos">Conceptos</a>
+          <a class="nav-link" href="#repaso">Repaso</a>
+          <a class="nav-link" href="#ejemplos">Ejemplos</a>
+          <a class="nav-link" href="#arquitectura-datos">Arquitectura</a>
+          <a class="nav-link" href="#agregar">Agregar</a>
+        </div>
+      </nav>
+
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow">Guía viva de preparación</p>
+          <h1>Conceptos clave de IA para responder con seguridad en entrevistas.</h1>
+          <p>
+            Organiza definiciones, frases listas para entrevista y repasos rápidos en una página que puedes publicar en
+            GitHub Pages y seguir alimentando con nuevos conceptos.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#conceptos">Empezar repaso</a>
+            <a class="secondary-action" href="#agregar">Agregar concepto</a>
+          </div>
+        </div>
+        <aside class="study-panel" aria-label="Resumen de avance">
+          <span class="panel-label">Progreso local</span>
+          <strong id="progressValue">0%</strong>
+          <div class="progress-track" aria-hidden="true">
+            <span id="progressBar"></span>
+          </div>
+          <p id="progressText">Marca conceptos como dominados para medir tu avance.</p>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section class="toolbar-section" aria-labelledby="conceptos-title">
+        <div class="section-heading">
+          <p class="eyebrow">Biblioteca</p>
+          <h2 id="conceptos-title">Conceptos guardados</h2>
+        </div>
+
+        <div class="controls" id="conceptos">
+          <label class="search-box">
+            <span>Buscar</span>
+            <input id="searchInput" type="search" placeholder="RAG, Flask, SQL, seguridad..." autocomplete="off" />
+          </label>
+          <label class="select-box">
+            <span>Categoría</span>
+            <select id="categoryFilter">
+              <option value="todos">Todas</option>
+            </select>
+          </label>
+          <label class="select-box">
+            <span>Vista</span>
+            <select id="statusFilter">
+              <option value="todos">Todos</option>
+              <option value="pendientes">Pendientes</option>
+              <option value="dominados">Dominados</option>
+              <option value="favoritos">Favoritos</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="stats-grid" aria-label="Estadísticas">
+          <article>
+            <span id="totalCount">0</span>
+            <p>Total</p>
+          </article>
+          <article>
+            <span id="masteredCount">0</span>
+            <p>Dominados</p>
+          </article>
+          <article>
+            <span id="favoriteCount">0</span>
+            <p>Favoritos</p>
+          </article>
+        </div>
+
+        <div class="concept-grid" id="conceptGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="review-section" id="repaso" aria-labelledby="repaso-title">
+        <div class="section-heading">
+          <p class="eyebrow">Modo repaso</p>
+          <h2 id="repaso-title">Practica como si estuvieras en entrevista</h2>
+        </div>
+        <div class="review-layout">
+          <article class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Tarjeta de repaso">
+            <p class="flash-label" id="flashCategory">Concepto</p>
+            <h3 id="flashTitle">Selecciona una tarjeta</h3>
+            <p id="flashText">Usa el botón para iniciar un repaso aleatorio.</p>
+          </article>
+          <div class="review-actions">
+            <button class="primary-action" id="randomConcept" type="button">Repasar aleatorio</button>
+            <button class="secondary-button" id="flipCard" type="button">Ver frase de entrevista</button>
+            <button class="secondary-button" id="markCurrent" type="button">Marcar dominado</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="examples-section" id="ejemplos" aria-labelledby="ejemplos-title">
+        <div class="section-heading">
+          <p class="eyebrow">Casos aplicados</p>
+          <h2 id="ejemplos-title">Dos ejemplos de soluciones de IA</h2>
+        </div>
+
+        <div class="examples-intro">
+          <p>
+            Estos ejemplos te ayudan a explicar cómo se vería una solución real para una empresa mayorista de tecnología:
+            una ruta para consultar documentos con RAG y otra para consultar datos estructurados con Text2SQL.
+          </p>
+        </div>
+
+        <div class="example-grid">
+          <article class="example-card rag-example">
+            <span class="category-pill">Ejemplo 1: RAG</span>
+            <h3>Asistente inteligente de productos, garantías y documentación técnica</h3>
+
+            <div class="example-block">
+              <h4>Descripción del caso</h4>
+              <p>
+                Un asistente para asesores comerciales, servicio al cliente y equipos internos que responde preguntas
+                sobre productos, fichas técnicas, garantías, políticas internas, compatibilidades, licenciamiento y
+                documentación de fabricantes.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <h4>Problema que resuelve</h4>
+              <p>
+                Reduce el tiempo que los equipos invierten buscando información en PDFs, catálogos, manuales o documentos
+                internos, y ayuda a entregar respuestas más consistentes.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <h4>Preguntas que podría responder</h4>
+              <ul class="compact-list">
+                <li>¿Cuál es la política de garantía para portátiles HP?</li>
+                <li>¿Qué características tiene esta referencia Lenovo?</li>
+                <li>¿Qué condiciones aplican para la devolución de un producto?</li>
+                <li>¿Qué diferencias hay entre dos modelos de impresoras Epson?</li>
+              </ul>
+            </div>
+
+            <div class="flow-box" aria-label="Flujo técnico RAG">
+              Documentos técnicos y comerciales -> extracción de texto -> fragmentos -> embeddings -> PostgreSQL +
+              pgvector -> búsqueda semántica -> GPT responde con contexto.
+            </div>
+
+            <div class="example-note">
+              <strong>Frase de entrevista:</strong> RAG permite que el modelo consulte información documental real antes
+              de responder, reduciendo respuestas inventadas y mejorando la precisión.
+            </div>
+
+            <div class="value-box">
+              <h4>Valor para la empresa</h4>
+              <ul class="compact-list">
+                <li>Centraliza conocimiento técnico y comercial.</li>
+                <li>Mejora la atención a clientes y canales.</li>
+                <li>Disminuye errores sobre garantías, productos o procesos.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="example-card sql-example">
+            <span class="category-pill">Ejemplo 2: Text2SQL</span>
+            <h3>Asistente para consultas comerciales, inventario y ventas</h3>
+
+            <div class="example-block">
+              <h4>Descripción del caso</h4>
+              <p>
+                Un asistente para que líderes comerciales, gerentes y áreas operativas consulten ventas, inventario,
+                productos, clientes, marcas, facturación o rotación de referencias usando lenguaje natural.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <h4>Problema que resuelve</h4>
+              <p>
+                Evita que los usuarios dependan siempre de analistas o reportes manuales para obtener información rápida
+                de negocio, manteniendo validaciones de seguridad sobre las consultas.
+              </p>
+            </div>
+
+            <div class="example-block">
+              <h4>Preguntas que podría responder</h4>
+              <ul class="compact-list">
+                <li>¿Cuáles fueron los productos más vendidos este mes?</li>
+                <li>¿Qué referencias Lenovo tienen bajo inventario?</li>
+                <li>¿Qué clientes compraron licencias Microsoft en el último trimestre?</li>
+                <li>¿Qué marcas tuvieron mayor rotación en los últimos 30 días?</li>
+              </ul>
+            </div>
+
+            <div class="flow-box" aria-label="Flujo técnico Text2SQL">
+              Pregunta del usuario -> clasificación de intención -> generación SQL -> validación de seguridad ->
+              ejecución en PostgreSQL o DWH -> GPT resume la respuesta.
+            </div>
+
+            <pre class="sql-box"><code>SELECT p.nombre_producto, p.referencia,
+       SUM(v.cantidad) AS unidades_vendidas,
+       SUM(v.valor_total) AS venta_total
+FROM ventas v
+JOIN productos p ON v.producto_id = p.id
+JOIN marcas m ON p.marca_id = m.id
+WHERE m.nombre = 'HP'
+GROUP BY p.nombre_producto, p.referencia
+ORDER BY unidades_vendidas DESC
+LIMIT 10;</code></pre>
+
+            <div class="example-note">
+              <strong>Frase de entrevista:</strong> Text2SQL permite que usuarios no técnicos consulten datos
+              estructurados, siempre validando roles, permisos y consultas de solo lectura.
+            </div>
+
+            <div class="value-box">
+              <h4>Controles clave</h4>
+              <ul class="compact-list">
+                <li>Permitir únicamente consultas SELECT.</li>
+                <li>Bloquear DELETE, UPDATE, INSERT, DROP o ALTER.</li>
+                <li>Registrar logs de pregunta, SQL generado y respuesta.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <aside class="architecture-summary">
+          <h3>Resumen de arquitectura</h3>
+          <p>
+            Flask puede exponer la API backend, PostgreSQL puede funcionar como base relacional y vectorial con pgvector,
+            SQLAlchemy puede manejar la conexión con datos, GPT puede generar respuestas, LangChain puede conectar los
+            componentes y LangGraph puede orquestar decisiones, validaciones y rutas del flujo.
+          </p>
+          <p>
+            <strong>Idea clave:</strong> RAG consulta conocimiento documental, Text2SQL consulta datos estructurados y
+            LangGraph decide qué ruta usar antes de entregar una respuesta segura.
+          </p>
+        </aside>
+      </section>
+
+      <section class="data-architecture-section" id="arquitectura-datos" aria-labelledby="arquitectura-datos-title">
+        <div class="section-heading">
+          <p class="eyebrow">Arquitectura de datos</p>
+          <h2 id="arquitectura-datos-title">Programas y herramientas clave</h2>
+        </div>
+
+        <div class="program-grid" aria-label="Programas y herramientas de datos">
+          <article class="program-card">
+            <h3>Python</h3>
+            <p>Lenguaje base para automatizar procesos, transformar datos, crear scripts y conectar fuentes.</p>
+          </article>
+          <article class="program-card">
+            <h3>PySpark / Apache Spark</h3>
+            <p>Herramienta para procesar grandes volúmenes de datos en entornos distribuidos.</p>
+          </article>
+          <article class="program-card">
+            <h3>SQL</h3>
+            <p>Lenguaje para consultar, cruzar, validar y preparar datos almacenados en bases relacionales.</p>
+          </article>
+          <article class="program-card">
+            <h3>ETL / ELT</h3>
+            <p>Proceso para extraer, cargar y transformar datos antes de entregarlos a analítica o BI.</p>
+          </article>
+          <article class="program-card">
+            <h3>ERP / Oracle</h3>
+            <p>Sistemas empresariales que pueden funcionar como fuente principal de datos operativos.</p>
+          </article>
+          <article class="program-card">
+            <h3>Cloud</h3>
+            <p>Azure, AWS o GCP permiten almacenar, procesar y desplegar soluciones de datos escalables.</p>
+          </article>
+          <article class="program-card">
+            <h3>Data Lake</h3>
+            <p>Repositorio para guardar datos estructurados y no estructurados antes de procesarlos.</p>
+          </article>
+          <article class="program-card">
+            <h3>Analítica / BI</h3>
+            <p>Capa final donde los datos se convierten en reportes, indicadores y decisiones de negocio.</p>
+          </article>
+        </div>
+
+        <article class="data-example-card">
+          <span class="category-pill">Ejemplo aplicado</span>
+          <h3>Pipeline inteligente para ventas, inventario y alertas comerciales</h3>
+          <p>
+            Una empresa puede integrar datos desde un ERP como Oracle, APIs comerciales y bases de datos internas para
+            construir una vista unificada de ventas, inventario, clientes y productos. Python puede automatizar la
+            extracción, PySpark puede transformar grandes volúmenes de información y SQL puede validar los resultados
+            antes de llevarlos a BI o a una solución con IA.
+          </p>
+
+          <div class="data-example-flow" aria-label="Flujo del ejemplo de arquitectura">
+            ERP / APIs / bases de datos -> Python -> Data Lake -> PySpark -> SQL -> BI / alertas / IA
+          </div>
+
+          <div class="data-example-columns">
+            <div>
+              <h4>Qué resuelve</h4>
+              <ul class="compact-list">
+                <li>Unifica información que antes estaba separada en varios sistemas.</li>
+                <li>Reduce cargas manuales y archivos repetidos.</li>
+                <li>Permite detectar bajo inventario, cambios de demanda o productos con alta rotación.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Cómo decirlo en entrevista</h4>
+              <p>
+                Implementaría un pipeline ETL / ELT que tome datos del ERP, APIs y bases internas, los procese con
+                Python y PySpark, valide calidad con SQL y los entregue a BI o a modelos de IA para generar alertas y
+                apoyar decisiones comerciales.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="data-example-card azure-example-card">
+          <span class="category-pill">Implementación en Azure</span>
+          <h3>Arquitectura para pronóstico de inventario y análisis comercial</h3>
+          <p>
+            Un caso más concreto sería construir una solución en Azure para anticipar quiebres de inventario y analizar
+            ventas por marca, línea de producto, cliente y canal. La solución tomaría datos desde Oracle ERP, APIs de
+            ventas y bases internas, los cargaría en un Data Lake, los transformaría con PySpark y publicaría resultados
+            confiables para Power BI y para un asistente de IA.
+          </p>
+
+          <div class="azure-stack-grid" aria-label="Servicios de Azure para la arquitectura">
+            <div>
+              <h4>Azure Data Factory</h4>
+              <p>Orquesta la ingesta desde Oracle ERP, APIs, archivos y bases de datos hacia el Data Lake.</p>
+            </div>
+            <div>
+              <h4>Azure Data Lake Storage Gen2</h4>
+              <p>Guarda datos por capas: bronze para crudos, silver para limpios y gold para datos listos para negocio.</p>
+            </div>
+            <div>
+              <h4>Azure Databricks / Synapse Spark</h4>
+              <p>Ejecuta notebooks con Python y PySpark para limpiar, cruzar, enriquecer y agregar información.</p>
+            </div>
+            <div>
+              <h4>Azure SQL Database</h4>
+              <p>Publica tablas curadas para consultas SQL, reportes, validaciones y consumo por aplicaciones.</p>
+            </div>
+            <div>
+              <h4>Power BI</h4>
+              <p>Consume las tablas gold para dashboards de inventario, ventas, rotación y alertas comerciales.</p>
+            </div>
+            <div>
+              <h4>Azure OpenAI</h4>
+              <p>Permite un asistente que explique variaciones, resuma hallazgos y ayude a consultar indicadores.</p>
+            </div>
+          </div>
+
+          <div class="data-example-flow" aria-label="Flujo Azure de extremo a extremo">
+            Oracle ERP / APIs -> Azure Data Factory -> Data Lake Gen2 -> Databricks PySpark -> Azure SQL -> Power BI ->
+            Azure OpenAI
+          </div>
+
+          <div class="data-example-columns">
+            <div>
+              <h4>Detalle de implementación</h4>
+              <ul class="compact-list">
+                <li>Data Factory ejecuta pipelines programados y controla dependencias entre fuentes.</li>
+                <li>PySpark estandariza códigos de producto, cruza ventas con inventario y calcula rotación.</li>
+                <li>SQL valida duplicados, fechas, cantidades negativas y reglas de calidad antes de publicar datos.</li>
+                <li>Power BI muestra inventario crítico, productos más vendidos y margen por línea.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Seguridad y operación</h4>
+              <ul class="compact-list">
+                <li>Azure Key Vault guarda credenciales y cadenas de conexión.</li>
+                <li>Managed Identity evita exponer usuarios y claves en notebooks o pipelines.</li>
+                <li>Azure Monitor registra fallos, tiempos de ejecución y alertas de carga.</li>
+                <li>Los permisos se separan por rol: ingeniería, analítica, negocio y administración.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="example-note">
+            <strong>Cómo decirlo en entrevista:</strong> Implementaría una arquitectura en Azure con Data Factory para
+            ingesta, Data Lake Gen2 por capas, Databricks con PySpark para transformación, Azure SQL para datos curados,
+            Power BI para consumo analítico y Azure OpenAI para agregar una capa de explicación y consulta inteligente.
+          </div>
+        </article>
+
+        <article class="data-example-card oracle-example-card">
+          <span class="category-pill">Oracle + PySpark + Medallion</span>
+          <h3>Extracción de datos Oracle y organización por capas Bronze, Silver y Gold</h3>
+          <p>
+            En un cargo de Python, PySpark y Big Data, Oracle normalmente se entiende como una fuente empresarial de
+            datos: Oracle Database, Oracle ERP, Oracle EBS, Oracle Fusion, Oracle Financials o bases transaccionales. El
+            objetivo no es solo consultar tablas, sino extraer información corporativa, llevarla a un entorno analítico y
+            transformarla con trazabilidad y calidad.
+          </p>
+
+          <div class="data-example-columns">
+            <div>
+              <h4>Qué debes saber de Oracle</h4>
+              <ul class="compact-list">
+                <li><strong>SQL Oracle:</strong> SELECT, JOIN, filtros, fechas, agregaciones y subconsultas.</li>
+                <li><strong>PL/SQL:</strong> procedimientos, funciones, paquetes y lógica de negocio en base de datos.</li>
+                <li><strong>Tablas transaccionales:</strong> facturas, clientes, pagos, productos e inventario.</li>
+                <li><strong>Vistas:</strong> consultas guardadas que exponen datos organizados para consumo.</li>
+                <li><strong>Índices y performance:</strong> ayudan a evitar extracciones pesadas sobre producción.</li>
+                <li><strong>JDBC:</strong> método común para conectar Spark o PySpark con Oracle.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Cómo entra PySpark</h4>
+              <p>
+                PySpark puede leer tablas o consultas desde Oracle usando JDBC, cargar los datos como DataFrames
+                distribuidos, aplicar limpieza, validaciones y reglas de negocio, y escribir resultados en un Data Lake,
+                Lakehouse, Data Warehouse o capa analítica.
+              </p>
+            </div>
+          </div>
+
+          <pre class="sql-box"><code>df_oracle = spark.read \
+    .format("jdbc") \
+    .option("url", "jdbc:oracle:thin:@host:1521/service") \
+    .option("dbtable", "SCHEMA.TABLA_CLIENTES") \
+    .option("user", "usuario") \
+    .option("password", "password") \
+    .option("driver", "oracle.jdbc.driver.OracleDriver") \
+    .load()</code></pre>
+
+          <div class="medallion-grid" aria-label="Capas de arquitectura Medallion">
+            <div>
+              <h4>Bronze</h4>
+              <p>Datos crudos tal como llegan de Oracle ERP, APIs o archivos. Conserva trazabilidad.</p>
+              <span>oracle.facturas, oracle.clientes, oracle.inventario</span>
+            </div>
+            <div>
+              <h4>Silver</h4>
+              <p>Datos limpios, normalizados y validados. Se eliminan duplicados y se homologan códigos.</p>
+              <span>clientes_silver, facturas_silver, productos_silver</span>
+            </div>
+            <div>
+              <h4>Gold</h4>
+              <p>Datos listos para negocio, BI, KPIs, modelos analíticos o soluciones con IA.</p>
+              <span>ventas_mensuales_gold, cartera_cliente_gold, kpi_recaudo_gold</span>
+            </div>
+          </div>
+
+          <div class="data-example-flow" aria-label="Flujo Oracle Medallion">
+            Oracle ERP / Oracle Database -> JDBC -> PySpark DataFrames -> Bronze -> Silver -> Gold -> Power BI /
+            analítica / IA
+          </div>
+
+          <div class="data-example-columns">
+            <div>
+              <h4>Transformaciones típicas</h4>
+              <ul class="compact-list">
+                <li>Eliminar duplicados y validar nulos.</li>
+                <li>Normalizar nombres de columnas y convertir fechas.</li>
+                <li>Homologar códigos de producto, cliente o moneda.</li>
+                <li>Cruzar facturas, pagos, clientes, productos e inventario.</li>
+                <li>Construir KPIs de ventas, cartera, recaudo o disponibilidad.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Respuesta fuerte para entrevista</h4>
+              <p>
+                Oracle puede funcionar como una fuente transaccional principal. Desde PySpark extraería datos con JDBC,
+                los llevaría a Bronze conservando la estructura original, aplicaría limpieza y reglas de negocio en
+                Silver, y construiría tablas Gold para reportería, KPIs o modelos analíticos.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <div class="architecture-summary">
+          <h3>Resumen para entrevista</h3>
+          <p>
+            La arquitectura integra fuentes como ERP, APIs y bases de datos; procesa la información con Python, PySpark y
+            SQL; y deja datos confiables para automatización, analítica, BI o soluciones con IA.
+          </p>
+          <p>
+            <strong>Idea clave:</strong> Python aporta flexibilidad, PySpark escala el procesamiento, SQL valida los datos
+            y BI convierte la información en decisiones.
+          </p>
+        </div>
+      </section>
+
+      <section class="add-section" id="agregar" aria-labelledby="agregar-title">
+        <div class="section-heading">
+          <p class="eyebrow">Crecimiento</p>
+          <h2 id="agregar-title">Agrega nuevos conceptos</h2>
+        </div>
+        <form class="concept-form" id="conceptForm">
+          <label>
+            Concepto
+            <input id="conceptName" name="conceptName" type="text" required placeholder="Ej. Fine-tuning" />
+          </label>
+          <label>
+            Categoría
+            <input id="conceptCategory" name="conceptCategory" type="text" required placeholder="Ej. Modelos" />
+          </label>
+          <label>
+            Explicación sencilla
+            <textarea id="conceptExplanation" name="conceptExplanation" rows="4" required></textarea>
+          </label>
+          <label>
+            Cómo decirlo en entrevista
+            <textarea id="conceptInterview" name="conceptInterview" rows="4" required></textarea>
+          </label>
+          <div class="form-actions">
+            <button class="primary-action" type="submit">Guardar concepto</button>
+            <button class="secondary-button" id="exportData" type="button">Exportar JSON</button>
+            <label class="import-button">
+              Importar JSON
+              <input id="importData" type="file" accept="application/json" />
+            </label>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Hecho para estudiar, responder mejor y seguir construyendo tu perfil como desarrolladora de IA.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
