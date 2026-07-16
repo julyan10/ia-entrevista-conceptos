@@ -21,6 +21,7 @@
           <button class="icon-button" id="themeToggle" type="button" aria-label="Cambiar tema" title="Cambiar tema">
             ◐
           </button>
+          <a class="nav-link" href="#arquitectura-agente">Agente IA</a>
           <a class="nav-link" href="#conceptos">Conceptos</a>
           <a class="nav-link" href="#repaso">Repaso</a>
           <a class="nav-link" href="#caso-saas">Caso SaaS</a>
@@ -55,6 +56,154 @@
     </header>
 
     <main>
+      <section class="agent-architecture-section" id="arquitectura-agente" aria-labelledby="arquitectura-agente-title">
+        <div class="section-heading">
+          <p class="eyebrow">Mapa moderno de entrevistas</p>
+          <h2 id="arquitectura-agente-title">Arquitectura completa de un Agente IA</h2>
+        </div>
+
+        <div class="agent-flow" aria-label="Flujo completo de agente IA">
+          <span>Usuario</span>
+          <span>Canal<br />WhatsApp / correo / web</span>
+          <span>Webhook</span>
+          <span>n8n<br />Orquestador</span>
+          <span>LLM</span>
+          <span>LangGraph<br />Control del flujo</span>
+          <span>LangChain<br />Herramientas</span>
+          <span>RAG</span>
+          <span>Embeddings</span>
+          <span>Base vectorial</span>
+          <span>Documentos</span>
+          <span>Respuesta</span>
+          <span>Humano<br />si confianza baja</span>
+        </div>
+
+        <div class="agent-overview">
+          <article class="agent-card">
+            <h3>Problema que resuelve</h3>
+            <p>
+              Un usuario quiere resolver una tarea real, no solo recibir texto. El agente debe entender la solicitud,
+              decidir qué ruta usar, consultar datos o documentos, ejecutar herramientas, validar la respuesta y escalar
+              a una persona si la confianza es baja.
+            </p>
+          </article>
+          <article class="agent-card">
+            <h3>Solución planteada</h3>
+            <p>
+              Separar el sistema en bloques controlados: canal de entrada, webhook, orquestador, LLM, grafo de decisiones,
+              herramientas, RAG, memoria, observabilidad, guardrails y revisión humana. Así la IA queda útil, trazable y
+              más segura.
+            </p>
+          </article>
+        </div>
+
+        <div class="agent-block-grid">
+          <article>
+            <h3>MCP</h3>
+            <p>Conecta el LLM con herramientas externas mediante servidores especializados.</p>
+            <div class="mini-flow">Usuario -> GPT -> MCP Server -> SQL Server -> Respuesta</div>
+          </article>
+          <article>
+            <h3>Function / Tool Calling</h3>
+            <p>El modelo decide llamar una función estructurada cuando necesita ejecutar una acción.</p>
+            <div class="mini-flow">Saldo -> consultarSaldo() -> resultado -> respuesta</div>
+          </article>
+          <article>
+            <h3>Chunking</h3>
+            <p>Divide documentos grandes antes de crear embeddings. Puede ser fixed, recursive o semantic.</p>
+            <div class="mini-flow">PDF 500 páginas -> chunks -> embeddings -> vector DB</div>
+          </article>
+          <article>
+            <h3>Re-ranking</h3>
+            <p>Ordena mejor los documentos recuperados antes de enviarlos al LLM.</p>
+            <div class="mini-flow">Vector search -> 20 docs -> ReRank -> 3 mejores -> GPT</div>
+          </article>
+        </div>
+
+        <div class="agent-two-column">
+          <article class="agent-card">
+            <h3>Bases vectoriales</h3>
+            <div class="vector-list">
+              <div><strong>Chroma</strong><span>Simple para prototipos y proyectos locales.</span></div>
+              <div><strong>FAISS</strong><span>Rápido y flexible, común en pruebas o soluciones embebidas.</span></div>
+              <div><strong>Pinecone</strong><span>Servicio administrado, escalable y fácil de operar.</span></div>
+              <div><strong>Weaviate</strong><span>Vector DB con metadata, filtros y capacidades semánticas.</span></div>
+              <div><strong>Milvus</strong><span>Orientado a alto volumen y búsquedas vectoriales a escala.</span></div>
+            </div>
+          </article>
+
+          <article class="agent-card">
+            <h3>Tipos de prompt</h3>
+            <ul class="compact-list">
+              <li><strong>Zero-shot:</strong> pedir una tarea sin ejemplos.</li>
+              <li><strong>One-shot:</strong> dar un ejemplo para guiar el formato.</li>
+              <li><strong>Few-shot:</strong> dar varios ejemplos para mejorar consistencia.</li>
+              <li><strong>Chain of Thought:</strong> guiar razonamiento paso a paso cuando aplica.</li>
+              <li><strong>Role prompting:</strong> asignar rol, contexto, restricciones y formato.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <caption>Comparaciones rápidas para entrevista</caption>
+            <thead>
+              <tr>
+                <th>Comparación</th>
+                <th>Diferencia sencilla</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>RAG vs Fine-tuning</td><td>RAG consulta documentos externos; fine-tuning modifica el comportamiento del modelo con entrenamiento.</td></tr>
+              <tr><td>MCP vs API</td><td>Una API expone endpoints; MCP estandariza cómo el modelo descubre y usa herramientas/contexto.</td></tr>
+              <tr><td>API vs Webhook</td><td>API se consulta cuando la llamas; webhook avisa automáticamente cuando ocurre un evento.</td></tr>
+              <tr><td>Agente vs Workflow</td><td>Workflow sigue pasos definidos; agente puede decidir rutas y herramientas según el contexto.</td></tr>
+              <tr><td>Prompt vs Function Calling</td><td>Prompt instruye al modelo; function calling ejecuta una acción con parámetros estructurados.</td></tr>
+              <tr><td>Embedding vs Vector DB</td><td>Embedding es la representación numérica; Vector DB almacena y busca esas representaciones.</td></tr>
+              <tr><td>LangChain vs LangGraph</td><td>LangChain conecta componentes; LangGraph controla flujos con estados y decisiones.</td></tr>
+              <tr><td>n8n vs Zapier</td><td>Ambos automatizan; n8n suele dar más control técnico y self-hosting, Zapier prioriza facilidad SaaS.</td></tr>
+              <tr><td>SQL vs NoSQL</td><td>SQL usa tablas estructuradas; NoSQL usa modelos flexibles como documentos, clave-valor o grafos.</td></tr>
+              <tr><td>LLM vs RAG</td><td>LLM genera lenguaje; RAG agrega recuperación de información externa antes de responder.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="agent-block-grid">
+          <article>
+            <h3>Memoria</h3>
+            <p>Short term guarda contexto de la conversación actual. Long term permite recordar preferencias o hechos en futuras sesiones.</p>
+          </article>
+          <article>
+            <h3>JSON</h3>
+            <p>Formato clave para intercambiar datos: <code>{"cliente":"Juan","tipo":"PQRS"}</code></p>
+          </article>
+          <article>
+            <h3>REST API</h3>
+            <p>GET consulta, POST crea, PUT actualiza y DELETE elimina recursos.</p>
+          </article>
+          <article>
+            <h3>Webhooks</h3>
+            <p>Cuando llega un evento, por ejemplo un correo, dispara automáticamente un flujo en n8n.</p>
+          </article>
+          <article>
+            <h3>Temperatura</h3>
+            <p>0 favorece precisión y consistencia. 1 aumenta creatividad y variedad.</p>
+          </article>
+          <article>
+            <h3>Tokens</h3>
+            <p>Unidades de texto que afectan coste, límite de contexto y tamaño de entrada/salida.</p>
+          </article>
+          <article>
+            <h3>Hallucination</h3>
+            <p>Respuesta inventada o no sustentada. Se reduce con RAG, temperatura baja, validaciones y buenos prompts.</p>
+          </article>
+          <article>
+            <h3>Guardrails y observabilidad</h3>
+            <p>Limitan respuestas y permiten monitorear agentes con logs, tracing, LangSmith, OpenTelemetry y evaluaciones.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="toolbar-section" aria-labelledby="conceptos-title">
         <div class="section-heading">
           <p class="eyebrow">Biblioteca</p>

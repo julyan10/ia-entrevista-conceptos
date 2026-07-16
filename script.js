@@ -523,6 +523,294 @@ const baseConcepts = [
       "Estándar para instrumentar aplicaciones y medir trazas, métricas y logs en sistemas distribuidos.",
     interview:
       "Usaría OpenTelemetry para observar latencia, errores, reintentos, coste y tiempo de revisión humana en producción."
+  },
+  {
+    id: "mcp",
+    name: "MCP",
+    category: "Agentes",
+    explanation:
+      "Model Context Protocol: estándar para conectar modelos con herramientas, datos y contexto externo mediante servidores MCP.",
+    interview:
+      "MCP permite que un LLM descubra y use herramientas de forma estandarizada, por ejemplo consultar SQL Server desde un MCP Server."
+  },
+  {
+    id: "function-calling",
+    name: "Function Calling / Tool Calling",
+    category: "Agentes",
+    explanation:
+      "Capacidad del modelo para llamar funciones o herramientas con parámetros estructurados cuando necesita ejecutar una acción.",
+    interview:
+      "Uso tool calling cuando el modelo no debe inventar, sino llamar una función como consultarSaldo() y responder con el resultado real."
+  },
+  {
+    id: "chunking",
+    name: "Chunking",
+    category: "RAG",
+    explanation:
+      "Proceso de dividir documentos grandes en fragmentos antes de crear embeddings y guardarlos en una base vectorial.",
+    interview:
+      "En RAG aplico chunking para partir un PDF largo en fragmentos útiles; puede ser fixed, recursive o semantic."
+  },
+  {
+    id: "re-ranking",
+    name: "Re-ranking",
+    category: "RAG",
+    explanation:
+      "Paso posterior a la búsqueda vectorial que reordena documentos recuperados para quedarse con los más relevantes.",
+    interview:
+      "Después de traer 20 resultados por vector search, usaría re-ranking para enviar al LLM solo los 3 mejores."
+  },
+  {
+    id: "chroma",
+    name: "Chroma",
+    category: "Vector DB",
+    explanation:
+      "Base vectorial sencilla y popular para prototipos, pruebas locales y aplicaciones RAG pequeñas o medianas.",
+    interview:
+      "Chroma es útil para prototipos RAG rápidos porque simplifica almacenar embeddings y buscar por similitud."
+  },
+  {
+    id: "pinecone",
+    name: "Pinecone",
+    category: "Vector DB",
+    explanation:
+      "Base vectorial administrada en la nube, pensada para escalar búsquedas semánticas sin operar infraestructura propia.",
+    interview:
+      "Pinecone conviene cuando quiero una vector database administrada, escalable y lista para producción."
+  },
+  {
+    id: "faiss",
+    name: "FAISS",
+    category: "Vector DB",
+    explanation:
+      "Librería de búsqueda vectorial de alto rendimiento, común en prototipos, investigación y soluciones embebidas.",
+    interview:
+      "FAISS es potente para búsqueda de similitud local o embebida, aunque requiere más operación que un servicio administrado."
+  },
+  {
+    id: "weaviate",
+    name: "Weaviate",
+    category: "Vector DB",
+    explanation:
+      "Base vectorial con soporte para metadata, filtros, esquemas y búsquedas semánticas.",
+    interview:
+      "Weaviate combina búsqueda vectorial con metadata y filtros, útil cuando el contexto necesita restricciones de negocio."
+  },
+  {
+    id: "milvus",
+    name: "Milvus",
+    category: "Vector DB",
+    explanation:
+      "Base vectorial open source orientada a alto volumen y búsquedas de similitud a escala.",
+    interview:
+      "Milvus es una opción fuerte cuando se necesitan búsquedas vectoriales masivas y control sobre infraestructura."
+  },
+  {
+    id: "fine-tuning",
+    name: "Fine-tuning",
+    category: "Modelos",
+    explanation:
+      "Proceso de ajustar un modelo con ejemplos de entrenamiento para modificar su comportamiento o especializarlo.",
+    interview:
+      "Usaría fine-tuning para enseñar estilo o patrones repetibles, no para meter conocimiento cambiante que conviene resolver con RAG."
+  },
+  {
+    id: "zero-shot",
+    name: "Zero-shot",
+    category: "Prompt Engineering",
+    explanation:
+      "Prompt donde se pide una tarea sin dar ejemplos previos.",
+    interview:
+      "Zero-shot funciona para tareas simples cuando la instrucción, el contexto y el formato de salida son claros."
+  },
+  {
+    id: "one-shot",
+    name: "One-shot",
+    category: "Prompt Engineering",
+    explanation:
+      "Prompt que incluye un ejemplo para guiar el tipo de respuesta esperada.",
+    interview:
+      "One-shot ayuda cuando quiero que el modelo copie un formato o criterio a partir de un ejemplo."
+  },
+  {
+    id: "few-shot",
+    name: "Few-shot",
+    category: "Prompt Engineering",
+    explanation:
+      "Prompt con varios ejemplos para mejorar consistencia, clasificación o formato de salida.",
+    interview:
+      "Few-shot es útil cuando la tarea tiene matices y quiero que el modelo aprenda el patrón desde varios ejemplos."
+  },
+  {
+    id: "chain-of-thought",
+    name: "Chain of Thought",
+    category: "Prompt Engineering",
+    explanation:
+      "Técnica para guiar razonamiento paso a paso en problemas que requieren análisis.",
+    interview:
+      "Uso razonamiento paso a paso internamente para problemas complejos, cuidando no exponer datos sensibles o razonamientos innecesarios."
+  },
+  {
+    id: "role-prompting",
+    name: "Role Prompting",
+    category: "Prompt Engineering",
+    explanation:
+      "Técnica donde se asigna rol, contexto, restricciones y formato para orientar mejor al modelo.",
+    interview:
+      "Role prompting ayuda a definir cómo debe comportarse el modelo, qué límites tiene y en qué formato debe responder."
+  },
+  {
+    id: "chatbot",
+    name: "Chatbot",
+    category: "Agentes",
+    explanation:
+      "Sistema conversacional que responde mensajes, normalmente con lógica limitada o flujos predefinidos.",
+    interview:
+      "Un chatbot conversa, pero no necesariamente razona ni usa herramientas complejas como un agente."
+  },
+  {
+    id: "asistente-ia",
+    name: "Asistente IA",
+    category: "Agentes",
+    explanation:
+      "Aplicación que ayuda al usuario con tareas usando IA, contexto y a veces integraciones con sistemas.",
+    interview:
+      "Un asistente IA puede responder, resumir, orientar y consultar contexto, pero puede no tener autonomía completa."
+  },
+  {
+    id: "multi-agent",
+    name: "Multi-Agent",
+    category: "Agentes",
+    explanation:
+      "Arquitectura donde varios agentes especializados colaboran o se coordinan para resolver una tarea.",
+    interview:
+      "Usaría multi-agent cuando conviene separar responsabilidades, por ejemplo extracción, validación, análisis y respuesta."
+  },
+  {
+    id: "short-term-memory",
+    name: "Short Term Memory",
+    category: "Memoria",
+    explanation:
+      "Memoria de corto plazo que conserva contexto dentro de una conversación o sesión actual.",
+    interview:
+      "Short term memory permite que el asistente recuerde lo que el usuario acaba de decir durante la misma conversación."
+  },
+  {
+    id: "long-term-memory",
+    name: "Long Term Memory",
+    category: "Memoria",
+    explanation:
+      "Memoria persistente que guarda preferencias, hechos o historial relevante para futuras interacciones.",
+    interview:
+      "Long term memory permite que mañana el sistema recuerde información útil de una conversación anterior, con permisos y privacidad."
+  },
+  {
+    id: "json",
+    name: "JSON",
+    category: "Backend",
+    explanation:
+      "Formato ligero para representar datos estructurados como objetos y listas, muy usado en APIs y respuestas de modelos.",
+    interview:
+      "JSON permite intercambiar datos de forma clara, por ejemplo cliente, correo y tipo de solicitud en una integración."
+  },
+  {
+    id: "webhook",
+    name: "Webhook",
+    category: "Automatización",
+    explanation:
+      "Mecanismo que dispara una llamada automática cuando ocurre un evento, como recibir un correo o crear un ticket.",
+    interview:
+      "Un webhook inicia un flujo sin preguntar constantemente; por ejemplo, llega un correo y n8n arranca la automatización."
+  },
+  {
+    id: "temperatura",
+    name: "Temperatura",
+    category: "Modelos",
+    explanation:
+      "Parámetro que controla qué tan deterministas o creativas son las respuestas del modelo.",
+    interview:
+      "Usaría temperatura baja para precisión y consistencia, y una más alta cuando necesito creatividad."
+  },
+  {
+    id: "tokens",
+    name: "Tokens",
+    category: "Modelos",
+    explanation:
+      "Unidades de texto que el modelo procesa; afectan coste, longitud de entrada/salida y ventana de contexto.",
+    interview:
+      "Los tokens impactan costo y límite de contexto, por eso optimizo prompts, documentos recuperados y respuestas."
+  },
+  {
+    id: "hallucination",
+    name: "Hallucination",
+    category: "Seguridad",
+    explanation:
+      "Cuando el modelo genera información falsa, no sustentada o inventada con apariencia de seguridad.",
+    interview:
+      "Reduzco hallucinations con RAG, temperatura baja, validaciones, citas de fuentes y límites claros en el prompt."
+  },
+  {
+    id: "guardrails",
+    name: "Guardrails",
+    category: "Seguridad",
+    explanation:
+      "Reglas y controles que limitan lo que el modelo puede responder, ejecutar o revelar.",
+    interview:
+      "Los guardrails ayudan a bloquear datos personales, acciones peligrosas o respuestas fuera de política."
+  },
+  {
+    id: "langsmith",
+    name: "LangSmith",
+    category: "Observabilidad",
+    explanation:
+      "Plataforma para monitorear, depurar, evaluar y trazar aplicaciones construidas con LLMs.",
+    interview:
+      "LangSmith ayuda a observar prompts, llamadas, trazas y evaluación de agentes en desarrollo y producción."
+  },
+  {
+    id: "n8n",
+    name: "n8n",
+    category: "Automatización",
+    explanation:
+      "Herramienta de automatización y orquestación de flujos, con conectores, webhooks y lógica visual.",
+    interview:
+      "n8n puede orquestar entradas por webhook, llamar APIs, consultar bases y escalar a humano cuando el agente no tiene confianza."
+  },
+  {
+    id: "zapier",
+    name: "Zapier",
+    category: "Automatización",
+    explanation:
+      "Plataforma SaaS para automatizar integraciones entre aplicaciones de forma rápida y con poca configuración técnica.",
+    interview:
+      "Zapier es muy práctico para automatizaciones SaaS simples; n8n suele dar más control técnico y opción self-hosted."
+  },
+  {
+    id: "nosql",
+    name: "NoSQL",
+    category: "Bases de datos",
+    explanation:
+      "Familia de bases no relacionales como documentos, clave-valor, columnas o grafos, pensadas para modelos flexibles.",
+    interview:
+      "NoSQL conviene cuando el esquema es flexible o el acceso no encaja bien en tablas relacionales tradicionales."
+  },
+  {
+    id: "workflow",
+    name: "Workflow",
+    category: "Automatización",
+    explanation:
+      "Flujo de pasos definidos para ejecutar un proceso de negocio o integración.",
+    interview:
+      "Un workflow sigue una ruta más predefinida; un agente puede decidir herramientas o caminos según el contexto."
+  },
+  {
+    id: "patron-automatizacion-ia",
+    name: "Patrón de automatización IA",
+    category: "Automatización",
+    explanation:
+      "Patrón común donde llega un evento, se clasifica, se consulta información, se responde y se escala si hace falta.",
+    interview:
+      "Un patrón típico sería: correo, clasificación, consulta a base de datos, respuesta automática y escalamiento humano si la confianza es baja."
   }
 ];
 
