@@ -473,6 +473,138 @@ textarea:focus {
   width: 100%;
 }
 
+.case-brief {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.case-brief > p,
+.case-card {
+  margin: 0;
+  padding: 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.case-brief > p,
+.case-card p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.case-priority-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.case-priority-grid article {
+  min-height: 188px;
+  padding: 18px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+}
+
+.case-priority-grid span,
+.model-ladder span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  margin-bottom: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 900;
+}
+
+.case-priority-grid h3,
+.case-card h3,
+.model-ladder h4 {
+  margin: 0 0 10px;
+}
+
+.case-priority-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.case-card {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.case-card strong {
+  color: var(--text);
+}
+
+.case-flow {
+  padding: 16px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.case-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.model-ladder {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.model-ladder > div {
+  min-height: 178px;
+  padding: 18px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+}
+
+.model-ladder p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.risk-grid div {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+}
+
+.risk-grid span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.metric-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .examples-intro {
   max-width: 860px;
   margin-bottom: 22px;
@@ -886,6 +1018,7 @@ textarea:focus {
   }
 
   .hero,
+  .case-brief,
   .controls,
   .review-layout {
     grid-template-columns: 1fr;
@@ -899,6 +1032,10 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .case-priority-grid,
+  .case-columns,
+  .model-ladder,
+  .risk-grid,
   .program-grid,
   .azure-stack-grid,
   .medallion-grid,

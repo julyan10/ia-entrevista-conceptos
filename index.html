@@ -23,6 +23,7 @@
           </button>
           <a class="nav-link" href="#conceptos">Conceptos</a>
           <a class="nav-link" href="#repaso">Repaso</a>
+          <a class="nav-link" href="#caso-saas">Caso SaaS</a>
           <a class="nav-link" href="#ejemplos">Ejemplos</a>
           <a class="nav-link" href="#arquitectura-datos">Arquitectura</a>
           <a class="nav-link" href="#agregar">Agregar</a>
@@ -117,6 +118,198 @@
             <button class="secondary-button" id="markCurrent" type="button">Marcar dominado</button>
           </div>
         </div>
+      </section>
+
+      <section class="case-section" id="caso-saas" aria-labelledby="caso-saas-title">
+        <div class="section-heading">
+          <p class="eyebrow">Caso práctico</p>
+          <h2 id="caso-saas-title">SaaS B2B AI-first: del problema a la solución</h2>
+        </div>
+
+        <div class="case-brief">
+          <p>
+            Este caso sirve para practicar cómo explicar una solución de IA de forma senior: no empezar por el modelo más
+            llamativo, sino por el problema raíz, el riesgo, los datos disponibles y una arquitectura controlada.
+          </p>
+          <div class="interview-callout">
+            <strong>Respuesta corta:</strong> priorizaría la extracción automática de información desde PDFs y emails,
+            porque convierte datos no estructurados en información confiable para validaciones, reportes, automatizaciones
+            y futuros asistentes.
+          </div>
+        </div>
+
+        <div class="case-priority-grid" aria-label="Priorización del caso SaaS">
+          <article>
+            <span>1</span>
+            <h3>PDFs y emails</h3>
+            <p>Cuello de botella raíz. Convierte documentos y correos en datos reutilizables.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>ERP vs CRM</h3>
+            <p>Mejora calidad operativa. Debe ser principalmente determinístico.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Reportes</h3>
+            <p>Alto valor visible, pero depende de datos limpios y validados.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Tickets</h3>
+            <p>Buen quick win si hay umbral de confianza y fallback humano.</p>
+          </article>
+          <article>
+            <span>5</span>
+            <h3>Chat SaaS</h3>
+            <p>Estratégico, pero posterior por permisos, coste y riesgo de alucinación.</p>
+          </article>
+        </div>
+
+        <article class="case-card">
+          <h3>Problema en términos simples</h3>
+          <p>
+            La empresa recibe información importante en PDFs, emails y formularios. Si esos datos se capturan
+            manualmente, los procesos se vuelven lentos, propensos a errores y difíciles de auditar. Además, cualquier
+            chatbot, reporte o automatización futura queda limitada por la mala calidad de la información de entrada.
+          </p>
+        </article>
+
+        <article class="case-card">
+          <h3>Solución planteada</h3>
+          <p>
+            Crear un servicio de <strong>Document Intelligence</strong> dentro de la arquitectura de microservicios. La IA
+            no modifica sistemas core directamente: extrae datos, entrega evidencia, calcula confianza y pasa por
+            validadores antes de publicar resultados hacia CRM, ERP o el SaaS.
+          </p>
+          <div class="case-flow" aria-label="Flujo document intelligence">
+            Ingesta -> almacenamiento seguro -> OCR/parsing -> clasificación -> extracción híbrida -> validación ->
+            revisión humana -> publicación controlada -> auditoría
+          </div>
+        </article>
+
+        <div class="case-columns">
+          <article class="case-card">
+            <h3>Arquitectura de alto nivel</h3>
+            <ul class="compact-list">
+              <li>Ingesta desde emails, APIs internas, carga manual o conectores.</li>
+              <li>Almacenamiento del original con tenant_id, usuario, origen, timestamp y permisos.</li>
+              <li>Preprocesamiento con OCR, limpieza, deduplicación y detección de tipo documental.</li>
+              <li>Cola o event bus para separar ingesta, extracción, validación y escritura.</li>
+              <li>Motor híbrido con reglas, templates, clasificadores y LLM cuando aporte valor.</li>
+              <li>Validación contra CRM, ERP, reglas de negocio y schemas versionados.</li>
+              <li>Bandeja humana para baja confianza, conflictos o campos sensibles.</li>
+            </ul>
+          </article>
+
+          <article class="case-card">
+            <h3>Ejemplo real</h3>
+            <p>
+              Llega una factura PDF por email. El sistema extrae NIT, fecha, valor, moneda, cliente, contrato y orden de
+              compra. Después valida cliente contra CRM, contrato contra ERP y reglas de negocio contra la plataforma SaaS.
+            </p>
+            <p>
+              Si los campos obligatorios tienen evidencia y confianza mayor o igual a 0.85, el registro queda listo para
+              integración. Si falta evidencia o hay conflicto, pasa a revisión humana con el fragmento exacto que soporta
+              cada dato.
+            </p>
+          </article>
+        </div>
+
+        <div class="case-columns">
+          <article class="case-card">
+            <h3>Qué sí resolvería con IA</h3>
+            <ul class="compact-list">
+              <li>Interpretar documentos variables o sin plantilla fija.</li>
+              <li>Extraer campos desde texto libre y normalizar nombres, fechas o monedas.</li>
+              <li>Explicar al revisor por qué propone un valor.</li>
+              <li>Usar embeddings para buscar documentos similares o ejemplos históricos.</li>
+              <li>Usar RAG para consultar reglas por cliente, políticas internas o diccionarios de campos.</li>
+            </ul>
+          </article>
+
+          <article class="case-card">
+            <h3>Qué no dejaría en manos de IA</h3>
+            <ul class="compact-list">
+              <li>Cálculos financieros críticos.</li>
+              <li>Permisos, segregación multi-tenant o escritura final en sistemas core.</li>
+              <li>Validaciones determinísticas entre ERP y CRM.</li>
+              <li>Decidir sin evidencia o sin umbral de confianza.</li>
+              <li>Ejecutar acciones sin auditoría, logs y control humano cuando aplique.</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="case-card">
+          <h3>Cascada de decisión de modelos</h3>
+          <div class="model-ladder">
+            <div>
+              <span>1</span>
+              <h4>Reglas / templates</h4>
+              <p>Para documentos conocidos y campos fáciles. No usa LLM.</p>
+            </div>
+            <div>
+              <span>2</span>
+              <h4>Modelo pequeño</h4>
+              <p>Para clasificación, normalización simple o extracción de baja complejidad.</p>
+            </div>
+            <div>
+              <span>3</span>
+              <h4>LLM grande</h4>
+              <p>Para documentos variables, baja confianza o campos que requieren interpretación.</p>
+            </div>
+            <div>
+              <span>4</span>
+              <h4>Revisión humana</h4>
+              <p>Para campos críticos, evidencia incompleta o confianza menor al umbral.</p>
+            </div>
+          </div>
+        </article>
+
+        <div class="case-columns">
+          <article class="case-card">
+            <h3>MVP</h3>
+            <ul class="compact-list">
+              <li>Empezar con 2 o 3 documentos de alto volumen.</li>
+              <li>Crear dataset dorado con respuestas correctas por campo.</li>
+              <li>Usar OCR, parsing, reglas y templates para casos frecuentes.</li>
+              <li>Activar LLM solo cuando el template falle o el documento sea variable.</li>
+              <li>Integrar un único sistema destino y mantener revisión humana inicial.</li>
+            </ul>
+          </article>
+
+          <article class="case-card">
+            <h3>Versión escalable</h3>
+            <ul class="compact-list">
+              <li>Separar ingesta, procesamiento, validación y escritura en servicios.</li>
+              <li>Usar colas, DLQ, reintentos idempotentes y autoscaling por cola.</li>
+              <li>Vector store por tenant, catálogo de schemas y evaluación automática.</li>
+              <li>Agregar caching, rate limits y selección dinámica de modelos.</li>
+              <li>Medir latencia, errores, coste, reintentos y revisión humana con OpenTelemetry.</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="case-card">
+          <h3>Riesgos y controles</h3>
+          <div class="risk-grid">
+            <div><strong>PII</strong><span>Cifrado, tokenización, retención limitada y control por roles.</span></div>
+            <div><strong>Multi-tenant</strong><span>tenant_id obligatorio en documentos, embeddings, logs y consultas.</span></div>
+            <div><strong>Prompt injection</strong><span>Tratar documentos como datos no confiables y validar outputs.</span></div>
+            <div><strong>Trazabilidad</strong><span>Guardar fuente, evidencia, modelo, prompt, schema, score y decisión.</span></div>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <h3>Métricas de éxito</h3>
+          <ul class="metric-list">
+            <li><strong>Precisión:</strong> más de 95% en campos críticos del dataset dorado.</li>
+            <li><strong>Automatización:</strong> al menos 80% de documentos sin revisión humana después del MVP.</li>
+            <li><strong>Tiempo:</strong> reducción del procesamiento por documento en 50%.</li>
+            <li><strong>Calidad:</strong> reducción de errores manuales o retrabajo entre sistemas en 30%.</li>
+            <li><strong>Coste:</strong> coste por documento y coste por campo exitoso dentro del umbral esperado.</li>
+          </ul>
+        </article>
       </section>
 
       <section class="examples-section" id="ejemplos" aria-labelledby="ejemplos-title">

@@ -7,6 +7,7 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 - Búsqueda por concepto, explicación o frase de entrevista.
 - Filtros por categoría, favoritos, pendientes y dominados.
 - Modo repaso con tarjeta aleatoria.
+- Sección de caso práctico SaaS B2B AI-first: problema, priorización, arquitectura, MVP, riesgos y métricas.
 - Sección con dos ejemplos aplicados: RAG y Text2SQL.
 - Conceptos de Power BI: Importación, DirectQuery y Conexión en vivo.
 - Sección final simplificada con programas y herramientas clave de datos.
@@ -15,6 +16,7 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 - Sección Oracle + PySpark + Medallion con conexión JDBC, capas Bronze/Silver/Gold y respuesta para entrevista.
 - Conceptos de datos: SQL, PySpark, ETL / ELT, ERP, Cloud, Data Lake, Analítica / BI e Integración de datos.
 - Conceptos Oracle/Lakehouse: Oracle Database, PL/SQL, JDBC, Medallion, Bronze, Silver, Gold, Lakehouse, Delta Lake, Data Quality, Data Lineage y Data Governance.
+- Conceptos de automatización IA: Document Intelligence, OCR, Human in the loop, Idempotencia, DLQ, Structured Outputs, Dataset dorado, Evaluación automática y OpenTelemetry.
 - Agregar conceptos nuevos desde la página.
 - Guardado local con `localStorage`.
 - Exportar e importar los conceptos en JSON.

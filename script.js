@@ -442,6 +442,87 @@ const baseConcepts = [
       "Estrategia para procesar solo datos nuevos o modificados en lugar de recargar toda la información cada vez.",
     interview:
       "La carga incremental reduce tiempos y costos porque procesa cambios recientes usando fechas de actualización o llaves de control."
+  },
+  {
+    id: "document-intelligence",
+    name: "Document Intelligence",
+    category: "Automatización IA",
+    explanation:
+      "Solución que extrae, interpreta y valida información desde documentos como PDFs, emails, formularios o imágenes.",
+    interview:
+      "Document Intelligence convierte información no estructurada en datos confiables que pueden alimentar validaciones, reportes y automatizaciones."
+  },
+  {
+    id: "ocr",
+    name: "OCR",
+    category: "Automatización IA",
+    explanation:
+      "Tecnología que convierte texto dentro de imágenes o documentos escaneados en texto digital procesable.",
+    interview:
+      "OCR es el primer paso cuando el documento no trae texto extraíble; permite leer facturas, formularios o PDFs escaneados."
+  },
+  {
+    id: "human-in-the-loop",
+    name: "Human in the loop",
+    category: "Automatización IA",
+    explanation:
+      "Diseño donde una persona revisa casos de baja confianza, información sensible o decisiones críticas antes de continuar.",
+    interview:
+      "Uso revisión humana cuando hay baja confianza, falta evidencia o el dato puede afectar un proceso crítico del negocio."
+  },
+  {
+    id: "idempotencia",
+    name: "Idempotencia",
+    category: "Arquitectura",
+    explanation:
+      "Propiedad que permite repetir un proceso sin duplicar efectos, como crear dos veces el mismo registro.",
+    interview:
+      "En pipelines asíncronos diseño operaciones idempotentes para que los reintentos no dupliquen documentos ni escrituras."
+  },
+  {
+    id: "dlq",
+    name: "DLQ",
+    category: "Arquitectura",
+    explanation:
+      "Dead Letter Queue: cola donde se envían mensajes que no pudieron procesarse después de varios intentos.",
+    interview:
+      "Una DLQ permite aislar errores no recuperables, revisarlos y reprocesarlos sin detener todo el flujo."
+  },
+  {
+    id: "structured-outputs",
+    name: "Structured Outputs",
+    category: "Automatización IA",
+    explanation:
+      "Técnica para pedirle al modelo respuestas con estructura fija, por ejemplo JSON bajo un schema definido.",
+    interview:
+      "Uso structured outputs para que la IA entregue campos validados en JSON, con null cuando no exista evidencia."
+  },
+  {
+    id: "dataset-dorado",
+    name: "Dataset dorado",
+    category: "Evaluación IA",
+    explanation:
+      "Conjunto de ejemplos revisados y correctos que sirve como referencia para medir precisión del sistema.",
+    interview:
+      "Antes de producción crearía un dataset dorado para medir precisión por campo, coste y mejoras entre versiones."
+  },
+  {
+    id: "evaluacion-automatica",
+    name: "Evaluación automática",
+    category: "Evaluación IA",
+    explanation:
+      "Proceso que mide la calidad del sistema con pruebas repetibles, métricas y ejemplos esperados.",
+    interview:
+      "La evaluación automática permite comparar modelos, prompts y reglas sin depender solo de revisión manual."
+  },
+  {
+    id: "opentelemetry",
+    name: "OpenTelemetry",
+    category: "Observabilidad",
+    explanation:
+      "Estándar para instrumentar aplicaciones y medir trazas, métricas y logs en sistemas distribuidos.",
+    interview:
+      "Usaría OpenTelemetry para observar latencia, errores, reintentos, coste y tiempo de revisión humana en producción."
   }
 ];
 
