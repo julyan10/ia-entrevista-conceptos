@@ -7,6 +7,7 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 - Búsqueda por concepto, explicación o frase de entrevista.
 - Filtros por categoría, favoritos, pendientes y dominados.
 - Modo repaso con tarjeta aleatoria.
+- Sección inicial de arquitectura completa de un Agente IA con MCP, tool calling, RAG, n8n, LangGraph, LangChain, memoria, observabilidad y guardrails.
 - Sección de caso práctico SaaS B2B AI-first: problema, priorización, arquitectura, MVP, riesgos y métricas.
 - Sección con dos ejemplos aplicados: RAG y Text2SQL.
 - Conceptos de Power BI: Importación, DirectQuery y Conexión en vivo.
@@ -17,6 +18,7 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 - Conceptos de datos: SQL, PySpark, ETL / ELT, ERP, Cloud, Data Lake, Analítica / BI e Integración de datos.
 - Conceptos Oracle/Lakehouse: Oracle Database, PL/SQL, JDBC, Medallion, Bronze, Silver, Gold, Lakehouse, Delta Lake, Data Quality, Data Lineage y Data Governance.
 - Conceptos de automatización IA: Document Intelligence, OCR, Human in the loop, Idempotencia, DLQ, Structured Outputs, Dataset dorado, Evaluación automática y OpenTelemetry.
+- Conceptos modernos de agentes: MCP, Function Calling, Chunking, Re-ranking, Chroma, Pinecone, FAISS, Weaviate, Milvus, Fine-tuning, memoria, webhooks, temperatura, tokens, hallucination, guardrails y comparaciones rápidas.
 - Agregar conceptos nuevos desde la página.
 - Guardado local con `localStorage`.
 - Exportar e importar los conceptos en JSON.
