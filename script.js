@@ -1279,6 +1279,17 @@ const additionalRoleConcepts = [
     question: "¿Cuándo usarías Warehouse en lugar de Lakehouse?"
   },
   {
+    id: "data-lake-vs-warehouse",
+    name: "Data Lake vs Lakehouse vs Warehouse",
+    category: "Arquitectura de datos",
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Data Lake guarda datos crudos y flexibles; Lakehouse organiza el lake con tablas, calidad y transacciones; Warehouse almacena datos modelados para SQL, BI y KPIs.",
+    interview: "Usaria Data Lake para aterrizar datos crudos, Lakehouse para limpiar y procesar en capas, y Warehouse para publicar un modelo relacional gobernado para Power BI.",
+    example: "En Fabric: OneLake como base, Lakehouse para Bronze/Silver/Gold con PySpark y Warehouse para consultas SQL de negocio.",
+    question: "Como explicarias la diferencia entre Lake, Lakehouse y Warehouse?"
+  },
+  {
     id: "onelake-shortcuts",
     name: "Shortcuts de OneLake",
     category: "Microsoft Fabric",

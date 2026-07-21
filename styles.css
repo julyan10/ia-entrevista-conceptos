@@ -995,6 +995,49 @@ textarea:focus {
   line-height: 1.55;
 }
 
+.lake-warehouse-card {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.lake-warehouse-card h3,
+.lake-warehouse-card h4 {
+  margin: 0;
+}
+
+.lake-warehouse-card > p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.lake-warehouse-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lake-warehouse-grid article {
+  display: grid;
+  gap: 10px;
+  min-height: 270px;
+  padding: 18px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+}
+
+.lake-warehouse-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .data-example-card {
   display: grid;
   gap: 16px;
@@ -1347,6 +1390,7 @@ textarea:focus {
   .model-ladder,
   .risk-grid,
   .program-grid,
+  .lake-warehouse-grid,
   .azure-stack-grid,
   .migration-step-grid,
   .migration-code-grid,

@@ -715,6 +715,92 @@ LIMIT 10;</code></pre>
           </article>
         </div>
 
+        <article class="lake-warehouse-card">
+          <span class="category-pill">Comparacion clave</span>
+          <h3>Data Lake vs Lakehouse vs Data Warehouse</h3>
+          <p>
+            En entrevista puedes explicarlo como tres niveles de madurez para almacenar y consumir datos. El Data Lake
+            guarda informacion cruda y flexible; el Lakehouse organiza ese lago con tablas, calidad y transacciones; el
+            Data Warehouse deja datos modelados para SQL, BI y decisiones de negocio.
+          </p>
+
+          <div class="lake-warehouse-grid" aria-label="Diferencia entre Data Lake, Lakehouse y Data Warehouse">
+            <article>
+              <h4>Data Lake</h4>
+              <p>Almacena datos crudos o semiprocesados en archivos. Acepta CSV, JSON, Parquet, imagenes, logs y datos no estructurados.</p>
+              <ul class="compact-list">
+                <li><strong>Uso:</strong> aterrizar datos desde ERP, APIs, bases de datos o archivos.</li>
+                <li><strong>Ventaja:</strong> flexible y economico para grandes volumenes.</li>
+                <li><strong>Riesgo:</strong> si no hay gobierno, se convierte en un lago desordenado.</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Lakehouse</h4>
+              <p>Combina la flexibilidad del lake con tablas tipo Delta, calidad, versionamiento y procesamiento Spark.</p>
+              <ul class="compact-list">
+                <li><strong>Uso:</strong> capas Bronze, Silver y Gold para analitica, IA y BI.</li>
+                <li><strong>Ventaja:</strong> sirve para datos crudos, limpios y analiticos en un mismo entorno.</li>
+                <li><strong>Ejemplo:</strong> Fabric Lakehouse con OneLake y notebooks PySpark.</li>
+              </ul>
+            </article>
+            <article>
+              <h4>Data Warehouse</h4>
+              <p>Base analitica estructurada para consultas SQL, modelos dimensionales, KPIs y reportes empresariales.</p>
+              <ul class="compact-list">
+                <li><strong>Uso:</strong> hechos, dimensiones, metricas oficiales y Power BI.</li>
+                <li><strong>Ventaja:</strong> alto rendimiento para consultas de negocio repetibles.</li>
+                <li><strong>Riesgo:</strong> menos flexible para datos crudos o no estructurados.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="comparison-table-wrap">
+            <table class="comparison-table">
+              <caption>Como decidir cual usar</caption>
+              <thead>
+                <tr>
+                  <th>Pregunta</th>
+                  <th>Data Lake</th>
+                  <th>Lakehouse</th>
+                  <th>Warehouse</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tipo de dato</td>
+                  <td>Crudo, variado, estructurado o no estructurado.</td>
+                  <td>Crudo y estructurado con tablas Delta.</td>
+                  <td>Estructurado y modelado para negocio.</td>
+                </tr>
+                <tr>
+                  <td>Usuario principal</td>
+                  <td>Ingenieria de datos y ciencia de datos.</td>
+                  <td>Ingenieria, analitica, BI e IA.</td>
+                  <td>Analistas, BI, finanzas, ventas y direccion.</td>
+                </tr>
+                <tr>
+                  <td>Transformacion</td>
+                  <td>Normalmente pendiente o inicial.</td>
+                  <td>Bronze, Silver y Gold con PySpark o SQL.</td>
+                  <td>Modelo estrella, vistas, agregados y KPIs.</td>
+                </tr>
+                <tr>
+                  <td>Ejemplo Fabric</td>
+                  <td>OneLake como almacenamiento base.</td>
+                  <td>Fabric Lakehouse para tablas Delta y notebooks.</td>
+                  <td>Fabric Warehouse para SQL y consumo BI.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="example-note">
+            <strong>Como decirlo en entrevista:</strong> Usaria Data Lake para aterrizar datos crudos, Lakehouse para
+            limpiar y organizar datos en capas con PySpark y Delta, y Warehouse cuando necesito un modelo relacional
+            gobernado, optimizado para SQL, indicadores y Power BI.
+          </div>
+        </article>
+
         <article class="data-example-card">
           <span class="category-pill">Ejemplo aplicado</span>
           <h3>Pipeline inteligente para ventas, inventario y alertas comerciales</h3>
