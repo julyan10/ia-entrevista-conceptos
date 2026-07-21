@@ -25,6 +25,7 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 - Exportar e importar los conceptos en JSON.
 - Ruta Data Scientist - UNICO con EDA, feature engineering, modelos supervisados y no supervisados, metricas, SHAP, A/B testing, MLOps y monitoreo.
 - Ruta Ingeniero de Datos y BI - Pint Pharma con pipelines, Azure Data Factory, Data Lake, Databricks, Delta Lake, modelo estrella, DAX, Power BI, particiones y calidad de datos.
+- Ejemplo de alto detalle para migrar PostgreSQL a Microsoft Fabric con OneLake, Lakehouse, Warehouse, PySpark, validaciones y Power BI.
 - Tema claro y oscuro.
 
 ## Cómo abrirlo

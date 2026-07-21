@@ -819,6 +819,167 @@ LIMIT 10;</code></pre>
           </div>
         </article>
 
+        <article class="data-example-card fabric-migration-card">
+          <span class="category-pill">Migracion PostgreSQL -> Microsoft Fabric</span>
+          <h3>Migracion analitica de PostgreSQL a Fabric con OneLake, Lakehouse, Warehouse y Power BI</h3>
+          <p>
+            Este ejemplo sirve para explicar una migracion realista: la empresa tiene PostgreSQL como base transaccional
+            para ventas, clientes, productos, inventario y pagos, pero los reportes son lentos, hay consultas pesadas
+            sobre produccion y cada area construye sus propios archivos. La solucion es llevar los datos a Microsoft
+            Fabric para separar operacion de analitica, organizar capas Medallion y consumir indicadores desde Power BI.
+          </p>
+
+          <div class="data-example-flow" aria-label="Flujo de migracion PostgreSQL a Fabric">
+            PostgreSQL -> Fabric Data Factory / Mirroring -> OneLake -> Lakehouse Bronze -> PySpark Silver -> Warehouse
+            Gold -> Modelo semantico -> Power BI / IA
+          </div>
+
+          <div class="migration-step-grid" aria-label="Fases de migracion PostgreSQL a Fabric">
+            <article>
+              <span>1</span>
+              <h4>Diagnostico</h4>
+              <p>Inventariar tablas, volumen, llaves, indices, consultas criticas, ventanas de carga y dependencia de reportes.</p>
+            </article>
+            <article>
+              <span>2</span>
+              <h4>Extraccion</h4>
+              <p>Usar Copy Activity para cargas batch o Mirroring si se necesita replica casi en tiempo real hacia OneLake.</p>
+            </article>
+            <article>
+              <span>3</span>
+              <h4>Bronze</h4>
+              <p>Guardar tablas crudas en Lakehouse con fecha de carga, origen, hash de fila y control de lote.</p>
+            </article>
+            <article>
+              <span>4</span>
+              <h4>Silver</h4>
+              <p>Limpiar tipos de datos, nulos, duplicados, codigos, zonas horarias, monedas y reglas de calidad.</p>
+            </article>
+            <article>
+              <span>5</span>
+              <h4>Gold</h4>
+              <p>Crear hechos y dimensiones para ventas, clientes, productos, calendario, inventario y recaudo.</p>
+            </article>
+            <article>
+              <span>6</span>
+              <h4>Consumo</h4>
+              <p>Publicar modelo semantico con medidas DAX, RLS, refresh controlado y dashboards de Power BI.</p>
+            </article>
+          </div>
+
+          <div class="data-example-columns">
+            <div>
+              <h4>Tablas origen en PostgreSQL</h4>
+              <ul class="compact-list">
+                <li><strong>public.customers:</strong> clientes, segmento, ciudad, estado y fecha de registro.</li>
+                <li><strong>public.products:</strong> SKU, categoria, marca, costo, precio y estado del producto.</li>
+                <li><strong>public.orders:</strong> cabecera de venta, fecha, cliente, canal, moneda y vendedor.</li>
+                <li><strong>public.order_items:</strong> detalle por producto, cantidad, descuento, impuesto y total.</li>
+                <li><strong>public.inventory_movements:</strong> entradas, salidas, bodega, lote y fecha de movimiento.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Destino recomendado en Fabric</h4>
+              <ul class="compact-list">
+                <li><strong>Lakehouse Bronze:</strong> replica cruda de PostgreSQL para trazabilidad y reprocesos.</li>
+                <li><strong>Lakehouse Silver:</strong> tablas Delta limpias, tipadas y con reglas de negocio aplicadas.</li>
+                <li><strong>Warehouse Gold:</strong> modelo dimensional optimizado para SQL, BI y usuarios de negocio.</li>
+                <li><strong>Modelo semantico:</strong> medidas reutilizables y una unica version de indicadores.</li>
+                <li><strong>Power BI:</strong> dashboards de ventas, inventario, margen, cartera y rotacion.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="migration-code-grid">
+            <div>
+              <h4>Consulta incremental desde PostgreSQL</h4>
+              <pre class="sql-box"><code>SELECT
+  o.id AS order_id,
+  o.customer_id,
+  o.order_date,
+  o.updated_at,
+  oi.product_id,
+  oi.quantity,
+  oi.unit_price,
+  oi.discount,
+  oi.tax,
+  (oi.quantity * oi.unit_price) - oi.discount + oi.tax AS line_total
+FROM public.orders o
+JOIN public.order_items oi ON oi.order_id = o.id
+WHERE o.updated_at >= :last_watermark
+  AND o.updated_at <  :current_watermark;</code></pre>
+            </div>
+            <div>
+              <h4>Transformacion Silver con PySpark</h4>
+              <pre class="sql-box"><code>from pyspark.sql import functions as F
+
+bronze = spark.read.table("bronze_postgres.orders_raw")
+
+silver = (
+    bronze
+    .dropDuplicates(["order_id", "product_id"])
+    .withColumn("order_date", F.to_date("order_date"))
+    .withColumn("line_total", F.col("line_total").cast("decimal(18,2)"))
+    .withColumn("load_date", F.current_date())
+)
+
+silver.write.format("delta").mode("overwrite").saveAsTable("silver.orders_clean")</code></pre>
+            </div>
+          </div>
+
+          <div class="data-example-columns">
+            <div>
+              <h4>Validaciones obligatorias</h4>
+              <ul class="compact-list">
+                <li>Conteo de filas por tabla origen vs destino.</li>
+                <li>Sumas de control: ventas, impuestos, descuentos, cantidades e inventario.</li>
+                <li>Integridad referencial: ventas sin cliente, items sin producto, movimientos sin bodega.</li>
+                <li>Comparacion por periodos: dia, mes, canal, pais, vendedor y categoria.</li>
+                <li>Control de duplicados por llaves naturales y llaves tecnicas.</li>
+                <li>Prueba de rendimiento: tiempo de carga, tiempo de consulta y impacto en PostgreSQL.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Riesgos y controles</h4>
+              <ul class="compact-list">
+                <li><strong>Tipos de datos:</strong> mapear numeric, timestamp, uuid, jsonb y boolean correctamente.</li>
+                <li><strong>Zona horaria:</strong> normalizar fechas para evitar diferencias entre operacion y BI.</li>
+                <li><strong>Cambios de esquema:</strong> versionar columnas y alertar cuando aparezcan campos nuevos.</li>
+                <li><strong>Seguridad:</strong> usar secretos administrados, roles, RLS y mascaramiento si hay PII.</li>
+                <li><strong>Costos:</strong> particionar por fecha y evitar reprocesar historicos completos.</li>
+                <li><strong>Rollback:</strong> mantener PostgreSQL como fuente oficial hasta validar paralelo.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="migration-timeline">
+            <article>
+              <h4>Semana 1 - Discovery</h4>
+              <p>Catalogo de tablas, reglas de negocio, volumetria, criticidad y definicion de KPIs.</p>
+            </article>
+            <article>
+              <h4>Semana 2 - MVP</h4>
+              <p>Carga de ventas y clientes a Bronze/Silver, validacion de conteos y primer reporte comparativo.</p>
+            </article>
+            <article>
+              <h4>Semana 3 - Modelo Gold</h4>
+              <p>Dimensiones, hechos, medidas DAX, seguridad por rol y pruebas con usuarios clave.</p>
+            </article>
+            <article>
+              <h4>Semana 4 - Go-live</h4>
+              <p>Ejecucion paralela, monitoreo, alertas, documentacion, capacitacion y apagado gradual de reportes antiguos.</p>
+            </article>
+          </div>
+
+          <div class="example-note">
+            <strong>Como decirlo en entrevista:</strong> Migraria PostgreSQL a Fabric separando la carga analitica de la
+            base transaccional. Primero haria discovery de tablas y volumetria, luego cargaria datos a OneLake con Data
+            Factory o Mirroring segun la necesidad de latencia. En Lakehouse aplicaria Bronze, Silver y Gold con PySpark,
+            validaria conteos y sumas contra PostgreSQL, publicaria un Warehouse o modelo semantico para Power BI y
+            mantendria ejecucion paralela hasta demostrar que los indicadores coinciden.
+          </div>
+        </article>
+
         <article class="data-example-card oracle-example-card">
           <span class="category-pill">Oracle + PySpark + Medallion</span>
           <h3>Extracción de datos Oracle y organización por capas Bronze, Silver y Gold</h3>
