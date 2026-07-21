@@ -281,7 +281,7 @@ h2 {
 
 .controls {
   display: grid;
-  grid-template-columns: 1fr 220px 220px;
+  grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(180px, 220px));
   gap: 14px;
   padding: 18px;
   background: var(--surface);
@@ -383,6 +383,32 @@ textarea:focus {
   text-transform: uppercase;
 }
 
+.role-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.role-badge,
+.level-badge {
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+.role-badge {
+  border-color: rgba(38, 102, 88, 0.24);
+  color: var(--accent-strong);
+}
+
+.level-badge {
+  border-color: rgba(184, 121, 23, 0.28);
+  color: var(--gold);
+}
+
 .card-text {
   margin: 0;
   color: var(--muted);
@@ -394,6 +420,30 @@ textarea:focus {
   padding-left: 14px;
   border-left: 3px solid var(--accent);
   line-height: 1.55;
+}
+
+.concept-details {
+  padding: 12px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+}
+
+.concept-details summary {
+  cursor: pointer;
+  color: var(--accent-strong);
+  font-weight: 900;
+}
+
+.detail-block {
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.detail-block strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
 }
 
 .card-actions {
@@ -471,6 +521,71 @@ textarea:focus {
 .review-actions button,
 .review-actions .primary-action {
   width: 100%;
+}
+
+.role-route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.route-card,
+.role-comparison-grid article {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.route-card {
+  border-top: 5px solid var(--accent);
+}
+
+.data-bi-route {
+  border-top-color: var(--gold);
+}
+
+.route-label {
+  width: fit-content;
+  padding: 7px 10px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.route-card h3,
+.role-comparison-grid h3 {
+  margin: 0;
+  font-size: 1.55rem;
+  line-height: 1.16;
+}
+
+.route-card p,
+.role-comparison-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.role-flow {
+  padding: 14px;
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-weight: 850;
+  line-height: 1.55;
+}
+
+.role-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
 }
 
 .agent-flow {
@@ -1164,6 +1279,8 @@ textarea:focus {
   .agent-overview,
   .agent-two-column,
   .agent-block-grid,
+  .role-route-grid,
+  .role-comparison-grid,
   .case-priority-grid,
   .case-columns,
   .model-ladder,

@@ -22,6 +22,7 @@
             ◐
           </button>
           <a class="nav-link" href="#arquitectura-agente">Agente IA</a>
+          <a class="nav-link" href="#rutas-cargo">Rutas</a>
           <a class="nav-link" href="#conceptos">Conceptos</a>
           <a class="nav-link" href="#repaso">Repaso</a>
           <a class="nav-link" href="#caso-saas">Caso SaaS</a>
@@ -204,6 +205,68 @@
         </div>
       </section>
 
+      <section class="role-routes-section" id="rutas-cargo" aria-labelledby="rutas-cargo-title">
+        <div class="section-heading">
+          <p class="eyebrow">Preparacion por vacante</p>
+          <h2 id="rutas-cargo-title">Rutas de preparacion por cargo</h2>
+        </div>
+
+        <div class="role-route-grid">
+          <article class="route-card">
+            <span class="route-label">Data Scientist - UNICO</span>
+            <h3>Analitica, modelos y decisiones de negocio</h3>
+            <p>
+              En esta ruta debes mostrar criterio para convertir un problema de negocio en datos, variables, modelo,
+              metrica, explicacion y monitoreo. La clave es responder con estructura, no solo nombrar algoritmos.
+            </p>
+            <div class="role-flow">
+              Problema -> datos -> EDA -> feature engineering -> modelo -> metricas -> explicabilidad -> despliegue
+            </div>
+            <ul class="compact-list">
+              <li>Prediccion de churn o riesgo de cliente con variables historicas.</li>
+              <li>Segmentacion de usuarios para campanas, retencion o personalizacion.</li>
+              <li>Evaluacion de modelos con precision, recall, AUC, F1 y matriz de confusion.</li>
+              <li>Uso de SHAP para explicar que variables influyen en una prediccion.</li>
+            </ul>
+          </article>
+
+          <article class="route-card data-bi-route">
+            <span class="route-label">Ingeniero de Datos y BI - Pint Pharma</span>
+            <h3>Pipelines, calidad de datos y BI confiable</h3>
+            <p>
+              En esta ruta debes conectar fuentes como ERP, APIs y bases de datos, procesarlas con Python, PySpark y SQL,
+              y entregar modelos analiticos listos para Power BI, automatizacion o casos de IA.
+            </p>
+            <div class="role-flow">
+              ERP / APIs / BD -> Azure Data Factory -> Data Lake -> PySpark -> Delta -> modelo semantico -> Power BI
+            </div>
+            <ul class="compact-list">
+              <li>Pipeline medallion Bronze, Silver y Gold para ventas, inventario o cartera.</li>
+              <li>Integracion de Oracle ERP con PySpark usando JDBC y validaciones de calidad.</li>
+              <li>Modelo estrella con hechos, dimensiones, granularidad y medidas DAX.</li>
+              <li>Actualizaciones incrementales, particiones y monitoreo de cargas.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="role-comparison-grid" aria-label="Comparaciones por cargo">
+          <article>
+            <h3>Como responder para Data Scientist</h3>
+            <p>
+              Habla de hipotesis, calidad del dataset, sesgos, variables, evaluacion, interpretabilidad y valor del
+              modelo. Un buen cierre es explicar como lo llevarias a produccion y como mediria si sigue funcionando.
+            </p>
+          </article>
+          <article>
+            <h3>Como responder para Datos y BI</h3>
+            <p>
+              Habla de fuentes, ingesta, ETL/ELT, particiones, calidad, trazabilidad, modelo semantico y consumo en Power
+              BI. Un buen cierre es mencionar monitoreo, costos y una unica version de la verdad.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="toolbar-section" aria-labelledby="conceptos-title">
         <div class="section-heading">
           <p class="eyebrow">Biblioteca</p>
@@ -214,6 +277,15 @@
           <label class="search-box">
             <span>Buscar</span>
             <input id="searchInput" type="search" placeholder="RAG, Flask, SQL, seguridad..." autocomplete="off" />
+          </label>
+          <label class="select-box">
+            <span>Vacante o ruta</span>
+            <select id="roleFilter">
+              <option value="todas">Todas las rutas</option>
+              <option value="Data Scientist - UNICO">Data Scientist - UNICO</option>
+              <option value="Ingeniero de Datos y BI - Pint Pharma">Ingeniero de Datos y BI - Pint Pharma</option>
+              <option value="General">General</option>
+            </select>
           </label>
           <label class="select-box">
             <span>Categoría</span>
@@ -881,7 +953,7 @@ LIMIT 10;</code></pre>
     </main>
 
     <footer class="footer">
-      <p>Hecho para estudiar, responder mejor y seguir construyendo tu perfil como desarrolladora de IA.</p>
+      <p>Hecho para estudiar, responder mejor y seguir construyendo tu perfil como desarrollador de IA.</p>
     </footer>
 
     <script src="script.js"></script>

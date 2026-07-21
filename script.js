@@ -814,6 +814,769 @@ const baseConcepts = [
   }
 ];
 
+const roleOptions = ["General", "Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma"];
+
+const conceptRoleEnhancements = {
+  python: {
+    roles: ["General", "Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "En UNICO puede usarse para modelos de propensión de compra; en Pint Pharma para pipelines y validaciones.",
+    question: "¿Cuándo usarías Python para análisis, automatización o procesamiento de datos?"
+  },
+  sql: {
+    roles: ["General", "Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Consultar ventas, clientes, inventario, campañas y resultados de dashboards.",
+    question: "¿Cómo usarías SQL para validar datos antes de un modelo o dashboard?"
+  },
+  "importacion-power-bi": {
+    roles: ["General", "Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    example: "Usar Import para reportes comerciales con buen rendimiento cuando los datos se actualizan por horario.",
+    question: "¿Cuándo preferirías Import sobre DirectQuery?"
+  },
+  "directquery-power-bi": {
+    roles: ["General", "Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Consultar una fuente empresarial cuando se necesita información casi en tiempo real.",
+    question: "¿Qué riesgos de rendimiento tiene DirectQuery?"
+  },
+  "pyspark-apache-spark": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Procesar ventas, inventario y transacciones en Fabric o Databricks cuando pandas no alcanza.",
+    question: "¿Cuándo usarías PySpark en lugar de pandas?"
+  },
+  "arquitectura-medallion": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Organizar datos de ERP en Bronze, limpiar productos y clientes en Silver, y publicar KPIs en Gold.",
+    question: "¿Cómo implementarías una arquitectura Medallion?"
+  },
+  bronze: {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    example: "Cargar datos crudos de ERP, ventas, inventario o archivos sin transformar.",
+    question: "¿Qué guardarías en la capa Bronze?"
+  },
+  silver: {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Depurar productos, clientes, fechas, transacciones y duplicados.",
+    question: "¿Qué transformaciones aplicarías en Silver?"
+  },
+  gold: {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Publicar ventas por territorio, cumplimiento comercial, inventario y KPIs.",
+    question: "¿Qué tipo de tablas dejarías en Gold?"
+  },
+  n8n: {
+    roles: ["General", "Data Scientist - UNICO"],
+    level: "Intermedio",
+    example: "Activar un flujo cuando se actualizan datos, llamar una API de predicción y enviar resumen comercial.",
+    question: "¿Cómo integrarías n8n con un modelo analítico?"
+  },
+  "agente-ia": {
+    roles: ["General", "Data Scientist - UNICO"],
+    level: "Intermedio",
+    example: "Un agente que consulta ventas con SQL, compara periodos y recomienda acciones comerciales.",
+    question: "¿Qué controles pondrías a un agente que consulta datos de negocio?"
+  },
+  "delta-lake": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Tablas Delta en Fabric para soportar transacciones, versionamiento y capas Medallion.",
+    question: "¿Qué aportan las tablas Delta en un Lakehouse?"
+  },
+  "data-quality": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Validar conteos, duplicados, nulos, llaves huérfanas y totales antes de publicar dashboards.",
+    question: "¿Qué controles de calidad aplicarías antes de entregar un reporte?"
+  },
+  "data-governance": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    example: "Definir responsables, linaje, sensibilidad, reglas y permisos de los datos comerciales.",
+    question: "¿Cómo asegurarías gobierno y trazabilidad de datos?"
+  }
+};
+
+const additionalRoleConcepts = [
+  {
+    id: "ciclo-vida-ciencia-datos",
+    name: "Ciclo de vida de ciencia de datos",
+    category: "Ciencia de datos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Proceso que va desde entender el problema de negocio hasta preparar datos, entrenar, evaluar, implementar y monitorear modelos.",
+    interview: "No comienzo entrenando un modelo; traduzco la necesidad del negocio, valido datos, creo una línea base, comparo modelos y monitoreo valor.",
+    example: "Predecir qué clientes de UNICO tienen mayor probabilidad de responder a una campaña comercial.",
+    question: "¿Cómo convertirías una necesidad comercial en un problema de Machine Learning?"
+  },
+  {
+    id: "definicion-problema-negocio",
+    name: "Definición del problema de negocio",
+    category: "Analítica de negocio",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Traduce una pregunta de negocio en problema analítico, variable objetivo, unidad de análisis, horizonte, métrica técnica y KPI.",
+    interview: "Primero separo pregunta de negocio, variable objetivo, horizonte de predicción y KPI para no construir un modelo que no resuelva el problema real.",
+    example: "Pregunta: clientes que comprarán el próximo mes. Problema: clasificación binaria. KPI: conversión y ventas incrementales.",
+    question: "¿Qué diferencia hay entre pregunta de negocio, variable objetivo y KPI?"
+  },
+  {
+    id: "aprendizaje-supervisado",
+    name: "Aprendizaje supervisado",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "Modelos entrenados con datos históricos que incluyen una variable objetivo conocida.",
+    interview: "Uso aprendizaje supervisado cuando tengo ejemplos pasados con la respuesta correcta, como compra, abandono o ventas.",
+    example: "Predecir abandono, probabilidad de compra o ventas esperadas de clientes.",
+    question: "¿Cuándo un problema se puede resolver con aprendizaje supervisado?"
+  },
+  {
+    id: "aprendizaje-no-supervisado",
+    name: "Aprendizaje no supervisado",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "Modelos que buscan patrones o grupos sin una etiqueta objetivo conocida.",
+    interview: "Uso no supervisado cuando quiero descubrir segmentos o patrones sin tener una respuesta histórica marcada.",
+    example: "Segmentar clientes por frecuencia, valor monetario y comportamiento de compra.",
+    question: "¿Qué diferencia hay entre supervisado y no supervisado?"
+  },
+  {
+    id: "clasificacion-ml",
+    name: "Clasificación",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "Modelo que predice una categoría, como comprador/no comprador o abandono/no abandono.",
+    interview: "Clasificación sirve cuando la respuesta es una clase; puedo usar regresión logística, árboles, Random Forest o XGBoost.",
+    example: "Identificar clientes con riesgo de abandono o probabilidad de responder una campaña.",
+    question: "¿Qué algoritmos sencillos usarías para clasificación?"
+  },
+  {
+    id: "regresion-ml",
+    name: "Regresión",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "Modelo que predice un valor numérico continuo.",
+    interview: "Regresión sirve para estimar ventas, ticket promedio, visitas o valor futuro de un cliente.",
+    example: "Predecir ventas esperadas del siguiente mes por centro comercial o categoría.",
+    question: "¿Cuándo usarías regresión en lugar de clasificación?"
+  },
+  {
+    id: "clustering",
+    name: "Clustering",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Agrupa registros con características similares sin usar una etiqueta objetivo.",
+    interview: "Con clustering puedo encontrar segmentos naturales, por ejemplo clientes frecuentes, sensibles a descuentos o en riesgo.",
+    example: "K-Means para segmentar clientes por recency, frequency y monetary.",
+    question: "¿Cómo explicarías clustering a un gerente comercial?"
+  },
+  {
+    id: "forecasting-series-tiempo",
+    name: "Series de tiempo y forecasting",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Uso de datos ordenados por fecha para predecir valores futuros considerando tendencia, estacionalidad y eventos.",
+    interview: "En forecasting respeto el orden temporal y valido con periodos futuros, no mezclando aleatoriamente pasado y futuro.",
+    example: "Predecir ventas, visitantes o demanda durante promociones y temporadas.",
+    question: "¿Cómo validarías un modelo de ventas mensuales?"
+  },
+  {
+    id: "rfm",
+    name: "Segmentación RFM",
+    category: "Retail y clientes",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "Segmentación basada en recency, frequency y monetary: qué tan reciente, frecuente y valioso es un cliente.",
+    interview: "RFM permite priorizar clientes valiosos, nuevos, en riesgo o candidatos a reactivación.",
+    example: "Campaña especial para clientes de alto valor que no compran hace más de 60 días.",
+    question: "¿Qué significa Recency, Frequency y Monetary?"
+  },
+  {
+    id: "feature-engineering",
+    name: "Feature Engineering",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Creación de variables útiles a partir de datos originales para mejorar el modelo.",
+    interview: "Creo variables que representen comportamiento real: días desde última compra, ticket promedio, frecuencia y uso de promociones.",
+    example: "Número de compras en 90 días, categoría favorita, variación mensual y frecuencia de visitas.",
+    question: "¿Qué variables crearías para segmentar o predecir clientes?"
+  },
+  {
+    id: "train-validation-test",
+    name: "Train, Validation y Test",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "Separación de datos para entrenar, ajustar y evaluar finalmente un modelo.",
+    interview: "Uso train para aprender, validation para comparar y test como evaluación final; si hay tiempo, respeto el orden temporal.",
+    example: "Entrenar con meses pasados, validar con el mes siguiente y probar con el periodo más reciente.",
+    question: "¿Por qué no mezclarías futuro y pasado en datos temporales?"
+  },
+  {
+    id: "validacion-cruzada",
+    name: "Validación cruzada",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Método para evaluar un modelo en varias particiones y verificar estabilidad del rendimiento.",
+    interview: "Uso K-Fold en datos no temporales y Time Series Split cuando el orden del tiempo importa.",
+    example: "Comparar modelos de propensión usando varias particiones históricas.",
+    question: "¿Qué diferencia hay entre K-Fold y Time Series Split?"
+  },
+  {
+    id: "overfitting",
+    name: "Overfitting",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "El modelo aprende demasiado los datos de entrenamiento y falla con información nueva.",
+    interview: "Lo reduzco simplificando el modelo, regularizando, usando validación cruzada, más datos o controlando profundidad de árboles.",
+    example: "Un modelo que memoriza campañas pasadas pero no predice bien campañas nuevas.",
+    question: "¿Cómo evitarías overfitting?"
+  },
+  {
+    id: "underfitting",
+    name: "Underfitting",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "El modelo es demasiado simple y no aprende adecuadamente los patrones.",
+    interview: "Underfitting aparece cuando el modelo no captura señales relevantes ni en entrenamiento ni en prueba.",
+    example: "Usar una regla demasiado básica para predecir ventas con fuerte estacionalidad.",
+    question: "¿Cómo detectarías underfitting?"
+  },
+  {
+    id: "data-leakage",
+    name: "Data Leakage",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Avanzado",
+    explanation: "Uso accidental de información que no estaría disponible al momento real de la predicción.",
+    interview: "Evito data leakage revisando fechas, variables futuras y procesos que incluyan información posterior al evento.",
+    example: "Usar el valor final de una compra para predecir si esa compra ocurrirá.",
+    question: "¿Qué es data leakage y por qué es peligroso?"
+  },
+  {
+    id: "metricas-clasificacion",
+    name: "Métricas de clasificación",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Accuracy, precision, recall, F1, matriz de confusión y ROC-AUC evalúan distintos errores.",
+    interview: "La métrica depende del costo del error; para abandono puede importar recall porque quiero detectar clientes en riesgo.",
+    example: "Evaluar campaña de retención priorizando recall y F1, no solo accuracy.",
+    question: "¿Por qué accuracy puede ser engañosa?"
+  },
+  {
+    id: "metricas-regresion",
+    name: "Métricas de regresión",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "MAE, MSE, RMSE, R² y MAPE miden el error de predicciones numéricas desde distintas perspectivas.",
+    interview: "MAE es fácil de interpretar, RMSE penaliza errores grandes y MAPE expresa error porcentual cuando aplica.",
+    example: "Medir error de predicción de ventas mensuales o ticket promedio.",
+    question: "¿Cuándo usarías MAE, RMSE o MAPE?"
+  },
+  {
+    id: "datos-desbalanceados",
+    name: "Datos desbalanceados",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Ocurre cuando una clase tiene muchos más registros que otra.",
+    interview: "Uso class weights, submuestreo, sobremuestreo, SMOTE, ajuste de umbral y métricas como precision, recall y F1.",
+    example: "Solo 5% de clientes abandona, por eso accuracy puede ocultar mal rendimiento.",
+    question: "¿Cómo tratarías un problema con clases desbalanceadas?"
+  },
+  {
+    id: "baseline",
+    name: "Baseline",
+    category: "Evaluación de modelos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "Modelo o regla sencilla que sirve como punto mínimo de comparación.",
+    interview: "Antes de modelos complejos construyo un baseline para demostrar mejora real contra una regla simple.",
+    example: "Predecir siempre el promedio de ventas o la clase mayoritaria.",
+    question: "¿Por qué crearías un baseline?"
+  },
+  {
+    id: "interpretabilidad-modelo",
+    name: "Interpretabilidad del modelo",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Capacidad de explicar por qué un modelo tomó una decisión o qué variables influyen más.",
+    interview: "Uso importancia de variables y SHAP para explicar señales globales y casos por cliente.",
+    example: "La caída en frecuencia y días desde última visita aumentan riesgo de abandono.",
+    question: "¿Cómo explicarías un modelo a un gerente comercial?"
+  },
+  {
+    id: "insights-negocio",
+    name: "Insights de negocio",
+    category: "Analítica de negocio",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Un insight conecta qué ocurrió, por qué, impacto y acción recomendada.",
+    interview: "No entrego solo cifras; traduzco el análisis en causa probable, impacto y decisión accionable.",
+    example: "Clientes sin compra por 60 días reducen frecuencia 40%; recomendar campaña de reactivación.",
+    question: "¿Cómo convertirías un resultado analítico en un insight?"
+  },
+  {
+    id: "eda",
+    name: "Análisis exploratorio de datos - EDA",
+    category: "Ciencia de datos",
+    roles: ["Data Scientist - UNICO"],
+    level: "Básico",
+    explanation: "Revisión inicial de distribuciones, faltantes, atípicos, correlaciones, tendencias, segmentos y calidad.",
+    interview: "EDA me permite entender datos, detectar problemas y formular hipótesis antes de modelar.",
+    example: "Analizar ventas por temporada, clientes atípicos, datos faltantes y segmentos de compra.",
+    question: "¿Qué revisarías en un EDA para una vacante retail?"
+  },
+  {
+    id: "grandes-volumenes-datos",
+    name: "Procesamiento de grandes volúmenes",
+    category: "Ciencia de datos",
+    roles: ["Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Técnicas para procesar datos grandes sin cargar información innecesaria en memoria.",
+    interview: "Optimizo SQL, leo incrementalmente, particiono y uso PySpark cuando el volumen supera la capacidad práctica de pandas.",
+    example: "Procesar histórico de ventas por lotes y particionado por año y mes.",
+    question: "¿Cuándo usarías pandas y cuándo PySpark?"
+  },
+  {
+    id: "pipeline-machine-learning",
+    name: "Pipeline de Machine Learning",
+    category: "MLOps",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Flujo repetible de extracción, limpieza, transformación, entrenamiento, evaluación, registro, predicción y monitoreo.",
+    interview: "Un pipeline ML hace que el modelo sea repetible, auditable y mantenible, no un notebook aislado.",
+    example: "Entrenar y actualizar semanalmente un modelo de propensión de compra.",
+    question: "¿Qué etapas tendría un pipeline de Machine Learning?"
+  },
+  {
+    id: "model-drift",
+    name: "Model Drift",
+    category: "MLOps",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Cambio en los datos, la relación entre variables o el rendimiento del modelo con el tiempo.",
+    interview: "Monitoreo data drift, concept drift y performance drift para decidir si debo recalibrar o reentrenar.",
+    example: "Una promoción cambia el comportamiento de compra y reduce precisión del modelo.",
+    question: "¿Cómo monitorearías un modelo en producción?"
+  },
+  {
+    id: "mlops",
+    name: "MLOps",
+    category: "MLOps",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Prácticas para versionar, desplegar, monitorear y actualizar modelos de Machine Learning.",
+    interview: "MLOps incluye versionamiento, automatización, monitoreo, reentrenamiento, experimentos y CI/CD aplicado a modelos.",
+    example: "Registrar modelos, comparar métricas y desplegar la mejor versión a una API de predicción.",
+    question: "¿Qué prácticas de MLOps aplicarías?"
+  },
+  {
+    id: "ab-testing",
+    name: "A/B Testing",
+    category: "Analítica de negocio",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Comparación controlada entre dos alternativas para medir cuál genera mejor resultado.",
+    interview: "Compararía campaña tradicional contra campaña priorizada por modelo midiendo conversión, ingresos y rentabilidad.",
+    example: "Grupo A recibe campaña normal; grupo B recibe campaña seleccionada por propensión.",
+    question: "¿Cómo harías una prueba A/B de una campaña?"
+  },
+  {
+    id: "propensity-model",
+    name: "Propensity Model",
+    category: "Machine Learning",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Modelo que estima la probabilidad de que un cliente realice una acción.",
+    interview: "Un propensity model prioriza clientes con mayor probabilidad de compra, respuesta o abandono.",
+    example: "Ranking de clientes con probabilidad de responder una campaña comercial.",
+    question: "¿Qué caso de uso propondrías para UNICO?"
+  },
+  {
+    id: "clv",
+    name: "Customer Lifetime Value - CLV",
+    category: "Retail y clientes",
+    roles: ["Data Scientist - UNICO"],
+    level: "Intermedio",
+    explanation: "Estimación del valor económico que un cliente puede generar durante su relación con la empresa.",
+    interview: "CLV ayuda a priorizar inversión comercial según valor esperado del cliente.",
+    example: "Invertir más en retención de clientes con alto valor futuro.",
+    question: "¿Cómo medirías el impacto económico de un modelo de clientes?"
+  },
+  {
+    id: "microsoft-fabric",
+    name: "Microsoft Fabric",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Plataforma SaaS de Microsoft que integra ingeniería de datos, integración, almacenamiento, ciencia de datos, analítica y Power BI.",
+    interview: "Microsoft Fabric unifica cargas de datos en una sola plataforma usando OneLake como almacenamiento común.",
+    example: "Organizar datos comerciales, inventario y reportes en un workspace con Lakehouse, pipelines y Power BI.",
+    question: "¿Qué es Microsoft Fabric?"
+  },
+  {
+    id: "onelake",
+    name: "OneLake",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    explanation: "Repositorio unificado de datos de Fabric que funciona como lago común para distintos workloads.",
+    interview: "OneLake centraliza acceso a datos para Lakehouses, Warehouses, notebooks, modelos semánticos y Power BI.",
+    example: "Guardar datos Bronze, Silver y Gold de ventas e inventario en un mismo espacio administrado.",
+    question: "¿Qué función cumple OneLake?"
+  },
+  {
+    id: "fabric-workspaces",
+    name: "Workspaces de Fabric",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    explanation: "Espacios para organizar Lakehouses, Warehouses, pipelines, notebooks, modelos semánticos y reportes.",
+    interview: "Separaría workspaces o ambientes para desarrollo, pruebas y producción para controlar cambios.",
+    example: "Workspace DEV para notebooks, TEST para validación y PROD para reportes comerciales.",
+    question: "¿Por qué separar desarrollo, pruebas y producción?"
+  },
+  {
+    id: "fabric-lakehouse",
+    name: "Lakehouse en Fabric",
+    category: "Lakehouse",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Combina almacenamiento tipo Data Lake con tablas estructuradas y capacidades analíticas en Fabric.",
+    interview: "Un Lakehouse en Fabric permite trabajar archivos, tablas Delta, notebooks Spark y capas Medallion.",
+    example: "Bronze con archivos ERP, Silver con datos depurados y Gold con ventas por territorio.",
+    question: "¿Qué diferencia hay entre Lakehouse y Warehouse?"
+  },
+  {
+    id: "fabric-warehouse",
+    name: "Warehouse en Fabric",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Entorno analítico relacional orientado a SQL, modelos empresariales y consumo de BI.",
+    interview: "Usaría Warehouse cuando el consumo principal es SQL, modelos relacionales y analítica empresarial.",
+    example: "Modelo comercial con tablas de ventas, clientes, productos y territorios para BI.",
+    question: "¿Cuándo usarías Warehouse en lugar de Lakehouse?"
+  },
+  {
+    id: "onelake-shortcuts",
+    name: "Shortcuts de OneLake",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Referencias a datos almacenados en otras ubicaciones sin copiarlos físicamente.",
+    interview: "Los shortcuts reducen duplicidad y simplifican acceso a datos externos desde OneLake.",
+    example: "Referenciar datos existentes de otro lake sin copiarlos al workspace.",
+    question: "¿Para qué sirven los Shortcuts de OneLake?"
+  },
+  {
+    id: "data-factory-fabric",
+    name: "Data Factory en Fabric",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Capacidad para integrar y orquestar datos desde diferentes fuentes dentro de Fabric.",
+    interview: "Data Factory permite crear pipelines para copiar datos, ejecutar notebooks, programar cargas y controlar dependencias.",
+    example: "Pipeline diario que trae ventas del ERP y ejecuta notebook de transformación.",
+    question: "¿Qué función cumple Data Factory en Fabric?"
+  },
+  {
+    id: "data-pipelines",
+    name: "Data Pipelines",
+    category: "Ingeniería de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Flujos de orquestación para copiar datos, ejecutar notebooks, aplicar condiciones, programar cargas y gestionar errores.",
+    interview: "Un pipeline coordina actividades, dependencias, horarios, reintentos y manejo de fallos.",
+    example: "Copiar datos de inventario, ejecutar validaciones y publicar tabla Gold.",
+    question: "¿Cómo monitorearías un pipeline?"
+  },
+  {
+    id: "dataflows-gen2",
+    name: "Dataflows Gen2",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    explanation: "Herramienta basada en Power Query para extraer, limpiar y transformar datos con experiencia low-code.",
+    interview: "Dataflow Gen2 transforma datos con Power Query; notebook se usa para lógica avanzada con Python o PySpark.",
+    example: "Limpiar catálogos de productos con reglas simples antes de cargarlos.",
+    question: "¿Cuándo usarías Pipeline, Dataflow Gen2 o Notebook?"
+  },
+  {
+    id: "notebooks-fabric",
+    name: "Notebooks en Fabric",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Entorno interactivo para ejecutar Python, PySpark y Spark SQL.",
+    interview: "Uso notebooks para limpieza avanzada, deduplicación, transformaciones masivas y cargas Silver/Gold.",
+    example: "Notebook PySpark que normaliza clientes, productos y ventas.",
+    question: "¿Qué transformaciones harías en un notebook?"
+  },
+  {
+    id: "spark-fabric",
+    name: "Spark en Fabric",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Motor distribuido para procesar grandes volúmenes con Spark SQL o PySpark dentro de Fabric.",
+    interview: "Spark en Fabric permite procesar datos grandes con particionamiento y transformaciones distribuidas.",
+    example: "Procesar ventas históricas por año y mes para alimentar Power BI.",
+    question: "¿Por qué usar Spark para grandes volúmenes?"
+  },
+  {
+    id: "direct-lake",
+    name: "Direct Lake",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Modo de Power BI para leer datos desde OneLake con rendimiento cercano a Import sin una importación tradicional completa.",
+    interview: "Direct Lake combina lectura sobre OneLake con experiencia de alto rendimiento para modelos semánticos.",
+    example: "Reporte de ventas que lee tablas Delta en OneLake.",
+    question: "¿Qué diferencia existe entre Import, DirectQuery y Direct Lake?"
+  },
+  {
+    id: "dax",
+    name: "DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Lenguaje para construir medidas y cálculos en modelos de Power BI.",
+    interview: "DAX permite definir métricas como ventas totales, ticket promedio, crecimiento mensual, cumplimiento y acumulados.",
+    example: "Medida de ventas totales o cumplimiento comercial por territorio.",
+    question: "¿Para qué sirve DAX en Power BI?"
+  },
+  {
+    id: "contexto-filtro-dax",
+    name: "Contexto de filtro en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Conjunto de filtros activos que cambian el resultado de una medida según fecha, producto, país o vendedor.",
+    interview: "Una medida DAX cambia según el contexto de filtro aplicado por visuales, segmentadores y relaciones.",
+    example: "Ventas totales filtradas por región, producto y mes.",
+    question: "¿Qué es el contexto de filtro en DAX?"
+  },
+  {
+    id: "calculate-dax",
+    name: "CALCULATE",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Función fundamental de DAX para modificar el contexto de filtro de una medida.",
+    interview: "CALCULATE permite recalcular una medida bajo filtros distintos, como ventas del año anterior o por región específica.",
+    example: "Calcular ventas acumuladas o participación por territorio.",
+    question: "¿Por qué CALCULATE es tan importante en DAX?"
+  },
+  {
+    id: "rls",
+    name: "RLS - Row-Level Security",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Control que restringe las filas que puede ver cada usuario según reglas de seguridad.",
+    interview: "RLS permite que un gerente regional solo vea los datos de su región.",
+    example: "Vendedor ve solo su cartera y gerente ve su territorio.",
+    question: "¿Cómo implementarías RLS?"
+  },
+  {
+    id: "actualizacion-incremental-power-bi",
+    name: "Actualización incremental en Power BI",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Actualiza solo periodos nuevos o recientes en lugar de recargar todo el histórico.",
+    interview: "La actualización incremental reduce tiempos de refresco y consumo cuando el histórico es grande.",
+    example: "Actualizar últimos 30 días de ventas y conservar años anteriores.",
+    question: "¿Cuándo usarías actualización incremental?"
+  },
+  {
+    id: "deployment-pipelines",
+    name: "Deployment Pipelines",
+    category: "DevOps de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Mecanismo para mover elementos entre desarrollo, pruebas y producción.",
+    interview: "Deployment Pipelines ayudan a controlar cambios y reducir errores al publicar artefactos de BI o datos.",
+    example: "Mover un modelo semántico validado de TEST a PROD.",
+    question: "¿Cómo separarías ambientes en Fabric o Power BI?"
+  },
+  {
+    id: "git-cicd-datos",
+    name: "Git y CI/CD para datos",
+    category: "DevOps de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Versionamiento, revisión, pruebas y despliegues controlados de notebooks, scripts y artefactos de datos.",
+    interview: "Aplicaría Git y CI/CD para revisar cambios, probar pipelines y desplegar de forma controlada.",
+    example: "Pull request para modificar un notebook de transformación Silver.",
+    question: "¿Cómo versionarías notebooks y scripts de datos?"
+  },
+  {
+    id: "microsoft-purview",
+    name: "Microsoft Purview",
+    category: "Gobierno de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Herramienta para catálogo, gobierno, linaje, clasificación y descubrimiento de datos.",
+    interview: "Purview ayuda a encontrar activos, entender linaje, clasificar sensibilidad y fortalecer gobierno de datos.",
+    example: "Catalogar tablas Gold y reportes con dueño, descripción y sensibilidad.",
+    question: "¿Cómo asegurarías linaje y gobierno?"
+  },
+  {
+    id: "data-catalog",
+    name: "Data Catalog",
+    category: "Gobierno de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    explanation: "Inventario organizado de activos de datos con nombre, descripción, responsable, fuente, sensibilidad, linaje y uso.",
+    interview: "Un catálogo ayuda a que negocio e ingeniería encuentren y entiendan datos confiables.",
+    example: "Catálogo de tablas de ventas, inventario, clientes y modelos semánticos.",
+    question: "¿Qué información incluirías en un Data Catalog?"
+  },
+  {
+    id: "data-owner-steward",
+    name: "Data Owner y Data Steward",
+    category: "Gobierno de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    explanation: "Data Owner decide sobre uso del dato desde negocio; Data Steward cuida definiciones, calidad y cumplimiento operativo.",
+    interview: "Owner responde por decisiones de negocio; Steward mantiene reglas, calidad, definiciones y operación del dato.",
+    example: "Comercial como Owner de ventas y analítica como Steward de definiciones y calidad.",
+    question: "¿Qué diferencia hay entre Data Owner y Data Steward?"
+  },
+  {
+    id: "observabilidad-pipelines",
+    name: "Observabilidad de pipelines",
+    category: "Ingeniería de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Monitoreo de duración, errores, reintentos, volumen, registros rechazados, última ejecución correcta y SLA.",
+    interview: "Monitoreo pipelines para detectar fallos, retrasos, variaciones de volumen y cumplimiento del SLA.",
+    example: "Alerta si el reporte comercial no se actualiza antes de las 7:00 a. m.",
+    question: "¿Cómo monitorearías un pipeline?"
+  },
+  {
+    id: "sla-datos",
+    name: "SLA de datos",
+    category: "Gobierno de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    explanation: "Compromiso sobre disponibilidad, calidad o tiempo de actualización de la información.",
+    interview: "Un SLA define cuándo y con qué calidad debe estar disponible un dato o reporte.",
+    example: "El dashboard comercial debe estar actualizado antes de las 7:00 a. m.",
+    question: "¿Qué es un SLA de datos?"
+  },
+  {
+    id: "reconciliacion-datos",
+    name: "Reconciliación de datos",
+    category: "Calidad de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Comparación entre origen y destino para validar que la carga esté completa y consistente.",
+    interview: "Reconciliaría con conteos, sumas de control, duplicados, nulos, llaves huérfanas, totales financieros y fechas máximas.",
+    example: "Comparar ventas del ERP contra tabla Gold y dashboard de Power BI.",
+    question: "¿Cómo validarías que el dashboard coincida con el ERP?"
+  },
+  {
+    id: "cdc",
+    name: "Change Data Capture - CDC",
+    category: "Ingeniería de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Técnica para identificar inserciones, actualizaciones y eliminaciones desde el sistema origen.",
+    interview: "CDC permite cargas incrementales más precisas al capturar cambios sin recargar todo.",
+    example: "Detectar cambios de inventario o ventas desde un ERP.",
+    question: "¿Cómo diseñarías una carga incremental?"
+  },
+  {
+    id: "particionamiento",
+    name: "Particionamiento",
+    category: "Ingeniería de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "División física o lógica de datos para mejorar lectura, escritura y mantenimiento.",
+    interview: "Particionaría tablas grandes por año y mes para reducir lecturas innecesarias.",
+    example: "Ventas particionadas por año_mes en OneLake.",
+    question: "¿Por qué particionarías una tabla grande?"
+  },
+  {
+    id: "esquema-estrella",
+    name: "Esquema estrella",
+    category: "Modelado dimensional",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Modelo dimensional compuesto por tabla de hechos y dimensiones descriptivas.",
+    interview: "Un esquema estrella facilita análisis y Power BI porque separa eventos medibles de contexto descriptivo.",
+    example: "FactVentas con DimFecha, DimProducto, DimCliente, DimTerritorio y DimRepresentante.",
+    question: "¿Cómo modelarías ventas en un esquema estrella?"
+  },
+  {
+    id: "tabla-hechos",
+    name: "Tabla de hechos",
+    category: "Modelado dimensional",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    explanation: "Tabla con eventos medibles como ventas, cantidades, costos, inventario o visitas.",
+    interview: "La tabla de hechos guarda métricas y claves hacia dimensiones.",
+    example: "FactVentas con unidades, valor, costo, producto, cliente y fecha.",
+    question: "¿Qué contiene una tabla de hechos?"
+  },
+  {
+    id: "dimensiones",
+    name: "Dimensiones",
+    category: "Modelado dimensional",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Básico",
+    explanation: "Tablas con contexto descriptivo como producto, cliente, fecha, país, región, vendedor o canal.",
+    interview: "Las dimensiones permiten filtrar, agrupar y entender las métricas de una tabla de hechos.",
+    example: "DimProducto, DimCliente, DimFecha, DimTerritorio y DimCanal.",
+    question: "¿Qué diferencia hay entre tabla de hechos y dimensión?"
+  },
+  {
+    id: "granularidad",
+    name: "Granularidad",
+    category: "Modelado dimensional",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Nivel de detalle representado por cada fila de una tabla de hechos.",
+    interview: "Definir granularidad evita ambigüedades; por ejemplo, una fila por producto, cliente, factura y fecha.",
+    example: "Ventas a nivel factura-producto-día.",
+    question: "¿Por qué definir granularidad antes de construir el modelo?"
+  },
+  {
+    id: "modelo-semantico-power-bi",
+    name: "Modelo semántico de Power BI",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Capa con relaciones, medidas, jerarquías, formatos, seguridad y definiciones de negocio.",
+    interview: "El modelo semántico estandariza métricas y reglas para que los reportes consuman una única versión de la verdad.",
+    example: "Medidas de ventas, margen, cumplimiento y jerarquía territorio-país-ciudad.",
+    question: "¿Qué es un modelo semántico?"
+  }
+];
+
 const storageKeys = {
   custom: "iaInterviewCustomConcepts",
   mastered: "iaInterviewMasteredConcepts",
@@ -832,6 +1595,7 @@ const state = {
 const elements = {
   conceptGrid: document.querySelector("#conceptGrid"),
   searchInput: document.querySelector("#searchInput"),
+  roleFilter: document.querySelector("#roleFilter"),
   categoryFilter: document.querySelector("#categoryFilter"),
   statusFilter: document.querySelector("#statusFilter"),
   totalCount: document.querySelector("#totalCount"),
@@ -862,9 +1626,43 @@ function slugify(text) {
     .replace(/(^-|-$)/g, "");
 }
 
+function uniqueValues(values) {
+  return [...new Set(values.filter(Boolean))];
+}
+
+function isBuiltInConcept(id) {
+  return baseConcepts.some((concept) => concept.id === id) || additionalRoleConcepts.some((concept) => concept.id === id);
+}
+
+function dedupeConcepts(concepts) {
+  const seen = new Set();
+  return concepts.filter((concept) => {
+    if (seen.has(concept.id)) return false;
+    seen.add(concept.id);
+    return true;
+  });
+}
+
+function normalizeConcept(concept) {
+  const enhancement = conceptRoleEnhancements[concept.id] || {};
+  const conceptRoles = Array.isArray(concept.roles) && concept.roles.length ? concept.roles : ["General"];
+  const roles = uniqueValues([...conceptRoles, ...(enhancement.roles || [])]);
+
+  return {
+    level: "Basico",
+    example: "",
+    question: "",
+    ...concept,
+    ...enhancement,
+    roles: roles.length ? roles : ["General"]
+  };
+}
+
 function loadConcepts() {
   const customConcepts = JSON.parse(localStorage.getItem(storageKeys.custom) || "[]");
-  state.concepts = [...baseConcepts, ...customConcepts];
+  const baseIds = new Set(baseConcepts.map((concept) => concept.id));
+  const additions = additionalRoleConcepts.filter((concept) => !baseIds.has(concept.id));
+  state.concepts = dedupeConcepts([...baseConcepts, ...additions, ...customConcepts].map(normalizeConcept));
 }
 
 function saveSet(key, value) {
@@ -893,12 +1691,15 @@ function updateCategories() {
 
 function getFilteredConcepts() {
   const query = elements.searchInput.value.trim().toLowerCase();
+  const role = elements.roleFilter.value;
   const category = elements.categoryFilter.value;
   const status = elements.statusFilter.value;
 
   return state.concepts.filter((concept) => {
-    const searchable = `${concept.name} ${concept.category} ${concept.explanation} ${concept.interview}`.toLowerCase();
+    const roles = concept.roles || ["General"];
+    const searchable = `${concept.name} ${concept.category} ${concept.level} ${roles.join(" ")} ${concept.explanation} ${concept.interview} ${concept.example} ${concept.question}`.toLowerCase();
     const matchesQuery = searchable.includes(query);
+    const matchesRole = role === "todas" || roles.includes(role);
     const matchesCategory = category === "todos" || concept.category === category;
     const matchesStatus =
       status === "todos" ||
@@ -906,7 +1707,7 @@ function getFilteredConcepts() {
       (status === "dominados" && state.mastered.has(concept.id)) ||
       (status === "favoritos" && state.favorites.has(concept.id));
 
-    return matchesQuery && matchesCategory && matchesStatus;
+    return matchesQuery && matchesRole && matchesCategory && matchesStatus;
   });
 }
 
@@ -944,6 +1745,7 @@ function renderConcepts() {
     const header = document.createElement("header");
     const title = document.createElement("h3");
     const category = document.createElement("span");
+    const badges = document.createElement("div");
     const explanation = document.createElement("p");
     const interview = document.createElement("p");
     const actions = document.createElement("div");
@@ -953,6 +1755,19 @@ function renderConcepts() {
     title.textContent = concept.name;
     category.className = "category-pill";
     category.textContent = concept.category;
+    badges.className = "role-badges";
+    (concept.roles || ["General"]).forEach((role) => {
+      const badge = document.createElement("span");
+      badge.className = "role-badge";
+      badge.textContent = role;
+      badges.append(badge);
+    });
+    if (concept.level) {
+      const level = document.createElement("span");
+      level.className = "level-badge";
+      level.textContent = concept.level;
+      badges.append(level);
+    }
     explanation.className = "card-text";
     explanation.textContent = concept.explanation;
     interview.className = "interview-line";
@@ -986,7 +1801,41 @@ function renderConcepts() {
       actions.append(deleteButton);
     }
 
-    card.append(header, explanation, interview, actions);
+    card.append(header, badges, explanation, interview);
+
+    if (concept.example || concept.question) {
+      const details = document.createElement("details");
+      details.className = "concept-details";
+      const summary = document.createElement("summary");
+      summary.textContent = "Ejemplo y pregunta";
+      details.append(summary);
+
+      if (concept.example) {
+        const example = document.createElement("div");
+        example.className = "detail-block";
+        const label = document.createElement("strong");
+        label.textContent = "Ejemplo";
+        const text = document.createElement("span");
+        text.textContent = concept.example;
+        example.append(label, text);
+        details.append(example);
+      }
+
+      if (concept.question) {
+        const question = document.createElement("div");
+        question.className = "detail-block";
+        const label = document.createElement("strong");
+        label.textContent = "Pregunta de practica";
+        const text = document.createElement("span");
+        text.textContent = concept.question;
+        question.append(label, text);
+        details.append(question);
+      }
+
+      card.append(details);
+    }
+
+    card.append(actions);
     fragment.append(card);
   });
   elements.conceptGrid.append(fragment);
@@ -1033,7 +1882,10 @@ function showFlashcard(concept, side = "explanation") {
   state.flashSide = side;
   elements.flashCategory.textContent = concept.category;
   elements.flashTitle.textContent = concept.name;
-  elements.flashText.textContent = side === "explanation" ? concept.explanation : concept.interview;
+  elements.flashText.textContent =
+    side === "explanation"
+      ? concept.explanation
+      : `${concept.interview}${concept.question ? ` Pregunta de practica: ${concept.question}` : ""}`;
   elements.flipCard.textContent = side === "explanation" ? "Ver frase de entrevista" : "Ver explicación";
   elements.markCurrent.textContent = state.mastered.has(concept.id) ? "Quitar dominado" : "Marcar dominado";
 }
@@ -1071,11 +1923,15 @@ function importConcepts(file) {
         id: concept.id || `custom-${Date.now()}-${slugify(concept.name)}`,
         name: concept.name,
         category: concept.category,
+        roles: concept.roles,
+        level: concept.level,
         explanation: concept.explanation,
         interview: concept.interview,
-        custom: !baseConcepts.some((baseConcept) => baseConcept.id === concept.id)
-      }));
-      state.concepts = imported;
+        example: concept.example,
+        question: concept.question,
+        custom: !isBuiltInConcept(concept.id)
+      })).map(normalizeConcept);
+      state.concepts = dedupeConcepts(imported);
       state.mastered = new Set(data.mastered || []);
       state.favorites = new Set(data.favorites || []);
       saveCustomConcepts();
@@ -1105,6 +1961,7 @@ elements.conceptGrid.addEventListener("click", (event) => {
 });
 
 elements.searchInput.addEventListener("input", renderConcepts);
+elements.roleFilter.addEventListener("change", renderConcepts);
 elements.categoryFilter.addEventListener("change", renderConcepts);
 elements.statusFilter.addEventListener("change", renderConcepts);
 
@@ -1130,15 +1987,19 @@ elements.conceptForm.addEventListener("submit", (event) => {
     id: `custom-${Date.now()}-${slugify(name)}`,
     name,
     category: formData.get("conceptCategory").trim(),
+    roles: ["General"],
+    level: "Personalizado",
     explanation: formData.get("conceptExplanation").trim(),
     interview: formData.get("conceptInterview").trim(),
+    example: "",
+    question: "",
     custom: true
   };
-  state.concepts.push(concept);
+  state.concepts.push(normalizeConcept(concept));
   saveCustomConcepts();
   elements.conceptForm.reset();
   renderAll();
-  showFlashcard(concept);
+  showFlashcard(normalizeConcept(concept));
 });
 
 elements.exportData.addEventListener("click", exportConcepts);

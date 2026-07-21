@@ -6,6 +6,7 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 
 - Búsqueda por concepto, explicación o frase de entrevista.
 - Filtros por categoría, favoritos, pendientes y dominados.
+- Filtro por ruta de preparacion: General, Data Scientist - UNICO e Ingeniero de Datos y BI - Pint Pharma.
 - Modo repaso con tarjeta aleatoria.
 - Sección inicial de arquitectura completa de un Agente IA con MCP, tool calling, RAG, n8n, LangGraph, LangChain, memoria, observabilidad y guardrails.
 - Sección de caso práctico SaaS B2B AI-first: problema, priorización, arquitectura, MVP, riesgos y métricas.
@@ -22,6 +23,8 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 - Agregar conceptos nuevos desde la página.
 - Guardado local con `localStorage`.
 - Exportar e importar los conceptos en JSON.
+- Ruta Data Scientist - UNICO con EDA, feature engineering, modelos supervisados y no supervisados, metricas, SHAP, A/B testing, MLOps y monitoreo.
+- Ruta Ingeniero de Datos y BI - Pint Pharma con pipelines, Azure Data Factory, Data Lake, Databricks, Delta Lake, modelo estrella, DAX, Power BI, particiones y calidad de datos.
 - Tema claro y oscuro.
 
 ## Cómo abrirlo
