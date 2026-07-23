@@ -814,7 +814,12 @@ const baseConcepts = [
   }
 ];
 
-const roleOptions = ["General", "Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma"];
+const roleOptions = [
+  "General",
+  "Data Scientist - UNICO",
+  "Ingeniero de Datos y BI - Pint Pharma",
+  "Analista Power BI - Minsait Aseguradora"
+];
 
 const conceptRoleEnhancements = {
   python: {
@@ -900,6 +905,114 @@ const conceptRoleEnhancements = {
     level: "Intermedio",
     example: "Definir responsables, linaje, sensibilidad, reglas y permisos de los datos comerciales.",
     question: "¿Cómo asegurarías gobierno y trazabilidad de datos?"
+  },
+  "oracle-database": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Fuente transaccional de polizas, primas, siniestros, asegurados e intermediarios para Cognos o Power BI.",
+    question: "Como consultarias datos aseguradores en Oracle para validar un reporte BI?"
+  },
+  "pl-sql": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Procedimientos existentes que calculan reglas de vigencia, primas o conciliaciones de siniestros.",
+    question: "Que revisarias en PL/SQL cuando un indicador no coincide?"
+  },
+  jdbc: {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    example: "Conectar herramientas ETL o procesos Spark a Oracle para extraer datos de polizas y siniestros.",
+    question: "Para que sirve JDBC en una arquitectura BI?"
+  },
+  "etl-elt": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Extraer polizas de Oracle, transformar codigos de producto y cargar dimensiones y hechos del Data Warehouse.",
+    question: "Como explicarias un ETL de polizas y siniestros?"
+  },
+  "carga-incremental": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Carga delta de polizas modificadas desde la ultima ejecucion usando fecha de actualizacion o marca de lote.",
+    question: "Como implementarias una carga incremental en Cognos Data Manager?"
+  },
+  "data-lineage": {
+    roles: ["General", "Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Documentar el recorrido desde Oracle/SQL Server hasta Data Manager, Package Cognos, modelo Power BI y reporte.",
+    question: "Como explicarias el linaje de una medida de prima emitida?"
+  },
+  "importacion-power-bi": {
+    roles: ["General", "Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    example: "Usar Import para reportes de primas o siniestralidad con alto rendimiento y actualizacion programada.",
+    question: "Cuando usarias Import para un dashboard asegurador?"
+  },
+  "directquery-power-bi": {
+    roles: ["General", "Data Scientist - UNICO", "Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Consultar un Data Warehouse optimizado cuando el negocio necesita datos recientes sin importar todo el historico.",
+    question: "Que riesgos tendria DirectQuery sobre Oracle o SQL Server?"
+  },
+  "conexion-en-vivo-power-bi": {
+    roles: ["General", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Consumir un modelo semantico centralizado ya publicado para mantener una sola version de indicadores.",
+    question: "Cuando preferirias conexion en vivo?"
+  },
+  dax: {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Medidas de prima emitida, prima devengada, siniestralidad, renovacion y variacion mensual.",
+    question: "Que medidas DAX crearias para una aseguradora?"
+  },
+  "contexto-filtro-dax": {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "La siniestralidad cambia segun filtros de ramo, producto, sucursal, fecha e intermediario.",
+    question: "Como afecta el contexto de filtro a una medida de siniestralidad?"
+  },
+  "calculate-dax": {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Calcular prima emitida del anio anterior o siniestros filtrados por estado aprobado.",
+    question: "Por que CALCULATE es clave para indicadores de seguros?"
+  },
+  rls: {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Restringir reportes por sucursal, region, canal o unidad de negocio.",
+    question: "Como implementarias seguridad por region en Power BI?"
+  },
+  "esquema-estrella": {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "FactPolizas, FactPrimas y FactSiniestros con DimFecha, DimAsegurado, DimProducto, DimCobertura y DimSucursal.",
+    question: "Como disenarias un esquema estrella para polizas y siniestros?"
+  },
+  "tabla-hechos": {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    example: "FactSiniestros con costo, valor indemnizado, estado, cobertura, producto, fecha y asegurado.",
+    question: "Que hechos tendria un modelo asegurador?"
+  },
+  dimensiones: {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    example: "DimAsegurado, DimProducto, DimCobertura, DimIntermediario, DimCanal, DimSucursal y DimFecha.",
+    question: "Que dimensiones usarias para analizar primas y siniestros?"
+  },
+  granularidad: {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "FactPolizas a nivel poliza-cobertura-periodo y FactSiniestros a nivel siniestro-cobertura-movimiento.",
+    question: "Por que definir granularidad antes de construir medidas?"
+  },
+  "modelo-semantico-power-bi": {
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    example: "Modelo con relaciones, calendario, medidas DAX, RLS y definiciones oficiales de prima, siniestralidad y renovacion.",
+    question: "Que debe contener un modelo semantico asegurador?"
   }
 };
 
@@ -1367,50 +1480,6 @@ const additionalRoleConcepts = [
     question: "Como validarias que una migracion fue exitosa?"
   },
   {
-    id: "migracion-postgresql-fabric",
-    name: "Migracion PostgreSQL a Fabric",
-    category: "Microsoft Fabric",
-    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
-    level: "Avanzado",
-    explanation: "Proceso para llevar datos analiticos desde PostgreSQL hacia OneLake, Lakehouse, Warehouse y Power BI.",
-    interview: "Migraria PostgreSQL a Fabric separando la carga transaccional de la analitica, usando Bronze/Silver/Gold, validaciones y ejecucion paralela.",
-    example: "Ventas, clientes y productos salen de PostgreSQL, llegan a OneLake, se limpian con PySpark y se publican en Power BI.",
-    question: "Como migrarias PostgreSQL a Fabric sin romper reportes existentes?"
-  },
-  {
-    id: "copy-activity-postgresql-fabric",
-    name: "Copy Activity PostgreSQL",
-    category: "Microsoft Fabric",
-    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
-    level: "Intermedio",
-    explanation: "Actividad de Fabric Data Factory para copiar datos desde PostgreSQL hacia destinos analiticos como Lakehouse o Warehouse.",
-    interview: "Usaria Copy Activity para cargas batch o incrementales, definiendo conexion, tabla o query, mapeo, particionamiento y monitoreo.",
-    example: "Copiar public.orders con filtro updated_at hacia una tabla Bronze en Lakehouse.",
-    question: "Cuando usarias Copy Activity en vez de un notebook?"
-  },
-  {
-    id: "mirroring-postgresql-fabric",
-    name: "Mirroring PostgreSQL en Fabric",
-    category: "Microsoft Fabric",
-    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
-    level: "Avanzado",
-    explanation: "Replica de baja latencia para llevar cambios de PostgreSQL a OneLake sin construir ETL complejo para cada tabla.",
-    interview: "Mirroring es util cuando se requieren datos casi en tiempo real; para transformaciones fuertes mantendria capas Silver y Gold sobre la replica.",
-    example: "Replicar tablas de ventas y pagos desde PostgreSQL hacia Fabric para dashboards operativos.",
-    question: "Que diferencia hay entre Mirroring y un pipeline batch?"
-  },
-  {
-    id: "validacion-paralela-migracion",
-    name: "Validacion paralela de migracion",
-    category: "Calidad de datos",
-    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
-    level: "Avanzado",
-    explanation: "Comparar origen y destino durante un periodo antes del go-live para asegurar que datos, KPIs y reportes coinciden.",
-    interview: "Antes de apagar reportes antiguos, ejecutaria paralelo: conteos, sumas de control, integridad referencial, KPIs y pruebas con usuarios.",
-    example: "Comparar ventas por dia en PostgreSQL contra Warehouse Gold durante cuatro semanas.",
-    question: "Como validarias que una migracion fue exitosa?"
-  },
-  {
     id: "dataflows-gen2",
     name: "Dataflows Gen2",
     category: "Microsoft Fabric",
@@ -1662,6 +1731,842 @@ const additionalRoleConcepts = [
     interview: "Definir granularidad evita ambigüedades; por ejemplo, una fila por producto, cliente, factura y fecha.",
     example: "Ventas a nivel factura-producto-día.",
     question: "¿Por qué definir granularidad antes de construir el modelo?"
+  },
+  {
+    id: "ecosistema-ibm-cognos",
+    name: "Ecosistema IBM Cognos",
+    category: "IBM Cognos",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Plataforma BI para integrar datos, modelar metadatos, construir estructuras analiticas y publicar informacion para reporteria.",
+    interview: "Dentro del ecosistema Cognos diferencio responsabilidades: Data Manager hace ETL, Framework Manager modela metadatos de negocio y Transformer crea PowerCubes.",
+    example: "Oracle y SQL Server -> Data Manager -> Data Warehouse -> Framework Manager o Transformer -> Packages o PowerCubes -> Cognos y Power BI.",
+    question: "Que diferencia existe entre Cognos Data Manager, Framework Manager y Transformer?"
+  },
+  {
+    id: "cognos-data-manager",
+    name: "IBM Cognos Data Manager",
+    category: "Cognos Data Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Herramienta ETL para extraer, transformar y cargar datos desde sistemas fuente hacia estructuras analiticas o Data Warehouses.",
+    interview: "Con Cognos Data Manager defino conexiones, transformaciones, Dimension Builds, Fact Builds y JobStreams para ejecutar ETL de forma controlada.",
+    example: "Extraer polizas y siniestros desde Oracle, homologar codigos, validar fechas y cargar tablas dimensionales.",
+    question: "Para que sirve Cognos Data Manager en una arquitectura BI?"
+  },
+  {
+    id: "catalogo-data-manager",
+    name: "Catalogo de Data Manager",
+    category: "Cognos Data Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Repositorio donde se organizan conexiones, variables, Builds, JobStreams, reglas, metadatos y configuracion de ejecucion.",
+    interview: "El catalogo centraliza los componentes del ETL y permite controlar que procesos se ejecutan, con que parametros y sobre que fuentes.",
+    example: "Catalogo con conexiones a Oracle y SQL Server, variables de fecha de corte y JobStreams de polizas y siniestros.",
+    question: "Que contiene un catalogo de Cognos Data Manager?"
+  },
+  {
+    id: "conexiones-data-manager",
+    name: "Conexiones en Data Manager",
+    category: "Cognos Data Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Configuracion de acceso a fuentes y destinos como Oracle, SQL Server, archivos o Data Warehouse.",
+    interview: "Separaria conexiones por ambiente, no expondria credenciales, probaria conectividad, controlaria permisos y registraria errores.",
+    example: "Conexion DEV y PROD hacia Oracle de polizas y SQL Server de siniestros.",
+    question: "Que buenas practicas aplicarias en conexiones de Data Manager?"
+  },
+  {
+    id: "dimension-build",
+    name: "Dimension Build",
+    category: "Cognos Data Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Proceso para construir y actualizar dimensiones usando llaves naturales, llaves sustitutas, jerarquias, actualizaciones y rechazos.",
+    interview: "Un Dimension Build mantiene dimensiones como asegurado, producto, cobertura, intermediario, sucursal y fecha antes de cargar hechos.",
+    example: "Actualizar DimProducto y DimCobertura cuando aparece un nuevo ramo o cobertura.",
+    question: "Que diferencia existe entre un Dimension Build y un Fact Build?"
+  },
+  {
+    id: "fact-build",
+    name: "Fact Build",
+    category: "Cognos Data Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Proceso para cargar tablas de hechos con eventos medibles y relacionarlos con dimensiones mediante llaves.",
+    interview: "Un Fact Build carga eventos medibles y relaciona cada registro con las dimensiones correspondientes mediante sus llaves.",
+    example: "Cargar FactPolizas, FactPrimas, FactSiniestros, FactPagos y FactReclamaciones.",
+    question: "Que validarias antes de cargar una tabla de hechos?"
+  },
+  {
+    id: "jobstream-data-manager",
+    name: "JobStream",
+    category: "Cognos Data Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Flujo que organiza procesos en orden definido, con dependencias, variables, condiciones, reintentos, logs y manejo de errores.",
+    interview: "Un JobStream coordina cargas de dimensiones, validaciones, cargas de hechos, conciliaciones y publicacion de informacion.",
+    example: "Cargar dimensiones -> validar -> cargar hechos -> conciliar -> publicar datos para reportes.",
+    question: "Que es un JobStream?"
+  },
+  {
+    id: "registros-rechazados-data-manager",
+    name: "Registros rechazados",
+    category: "Cognos Data Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Datos que no cumplen reglas de calidad y deben separarse para analisis, correccion o reproceso.",
+    interview: "No descartaria registros invalidos; los dejaria en una salida de rechazo con causa, lote, fecha y regla incumplida.",
+    example: "Poliza sin asegurado, siniestro sin producto, fecha invalida o prima negativa no justificada.",
+    question: "Como manejarias registros rechazados en un ETL?"
+  },
+  {
+    id: "logs-data-manager",
+    name: "Logs de Data Manager",
+    category: "Cognos Data Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Registro de inicio, fin, filas leidas, filas cargadas, filas rechazadas, errores, duracion y proceso afectado.",
+    interview: "Los logs permiten auditar cargas, diagnosticar fallos, medir tiempos y sustentar incidentes de datos.",
+    example: "Log diario del JobStream de siniestros con filas leidas, cargadas y rechazadas.",
+    question: "Que informacion debe contener un log ETL?"
+  },
+  {
+    id: "cognos-framework-manager",
+    name: "IBM Cognos Framework Manager",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Herramienta para importar metadatos desde fuentes y convertirlos en un modelo entendible para usuarios y reporteria.",
+    interview: "Framework Manager crea una capa semantica entre base de datos y reportes, con tablas, relaciones, calculos, filtros, seguridad y nombres de negocio.",
+    example: "Publicar un package de polizas vigentes y siniestralidad desde un Data Warehouse asegurador.",
+    question: "Que funcion cumple Framework Manager?"
+  },
+  {
+    id: "proyecto-modelo-package-framework",
+    name: "Proyecto, modelo y package",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Proyecto es la configuracion de desarrollo; modelo son los metadatos y relaciones; package es el subconjunto publicado para reportes.",
+    interview: "No publico todo el modelo; publico packages con objetos de negocio necesarios, reglas y seguridad definida.",
+    example: "Package de siniestros con dimensiones, medidas y filtros por sucursal.",
+    question: "Que diferencia hay entre proyecto, modelo y package?"
+  },
+  {
+    id: "capas-framework-manager",
+    name: "Capas de Framework Manager",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Organizacion en capa fisica, capa logica y capa de presentacion para separar fuente, reglas y lenguaje de negocio.",
+    interview: "Uso capa fisica para tablas importadas, logica para relaciones y calculos, y presentacion para nombres claros al usuario.",
+    example: "POLICY_PREMIUM_AMT se presenta como Prima emitida.",
+    question: "Como organizarias un modelo de Framework Manager?"
+  },
+  {
+    id: "query-subject",
+    name: "Query Subject",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Objeto consultable que puede representar una tabla, vista, SQL o combinacion logica.",
+    interview: "Un Query Subject representa una entidad de consulta, como polizas, siniestros o asegurados.",
+    example: "QS_Polizas, QS_Siniestros y QS_Asegurados.",
+    question: "Que es un Query Subject?"
+  },
+  {
+    id: "query-item",
+    name: "Query Item",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Campo individual dentro de un Query Subject.",
+    interview: "Un Query Item es el atributo o medida que el usuario ve dentro de una entidad consultable.",
+    example: "Numero de poliza, prima, fecha de vigencia, cobertura o costo del siniestro.",
+    question: "Que es un Query Item?"
+  },
+  {
+    id: "relaciones-cardinalidad-cognos",
+    name: "Relaciones y cardinalidad",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Definen como se conectan entidades: uno a uno, uno a muchos, muchos a muchos, obligatorias u opcionales.",
+    interview: "Una cardinalidad incorrecta puede generar duplicados, datos faltantes o consultas SQL ineficientes.",
+    example: "Una poliza puede tener varias coberturas y varios movimientos de prima.",
+    question: "Como funciona la cardinalidad en Framework Manager?"
+  },
+  {
+    id: "determinants-cognos",
+    name: "Determinants",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Metadatos que ayudan a Cognos a entender granularidad, llaves, dependencias funcionales y agregaciones correctas.",
+    interview: "Los determinants evitan agregaciones incorrectas cuando una dimension tiene varios niveles de detalle.",
+    example: "Dimension geografica con pais, departamento, ciudad y sucursal.",
+    question: "Que son los determinants?"
+  },
+  {
+    id: "dmr-cognos",
+    name: "Dimensional Model Relational - DMR",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Modelo dimensional construido sobre fuentes relacionales con dimensiones, jerarquias, niveles, medidas, drill-down y roll-up.",
+    interview: "DMR permite experiencia dimensional sin depender necesariamente de un cubo fisico.",
+    example: "Analizar primas por anio, ramo, producto y cobertura desde tablas relacionales.",
+    question: "Que es un modelo DMR?"
+  },
+  {
+    id: "star-schema-group-cognos",
+    name: "Star Schema Group",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Agrupacion de una tabla de hechos con dimensiones relacionadas para facilitar navegacion y consultas.",
+    interview: "Un Star Schema Group ayuda a exponer un modelo dimensional claro dentro de Framework Manager.",
+    example: "FactSiniestros con DimFecha, DimProducto, DimCobertura, DimSucursal y DimTipoSiniestro.",
+    question: "Para que sirve un Star Schema Group?"
+  },
+  {
+    id: "package-cognos",
+    name: "Package de Cognos",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Subconjunto publicado de un modelo de Framework Manager disponible para reportes y analisis.",
+    interview: "El package expone solo objetos de negocio necesarios, aplicando reglas y seguridad del modelo.",
+    example: "Package comercial con primas, renovaciones, intermediarios y sucursales.",
+    question: "Que es un package de Cognos?"
+  },
+  {
+    id: "publicacion-paquetes-cognos",
+    name: "Publicacion de paquetes",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Flujo para validar modelo, relaciones, consultas, objetos, seguridad y reportes antes de publicar.",
+    interview: "Antes de publicar pruebo consultas, relaciones, seguridad y resultados con usuarios clave.",
+    example: "Publicar package de siniestros despues de validar totales por ramo y sucursal.",
+    question: "Que validarias antes de publicar un package?"
+  },
+  {
+    id: "cognos-sql-vs-sql-nativo",
+    name: "Cognos SQL vs SQL nativo",
+    category: "Optimizacion SQL",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Cognos SQL es la consulta logica generada por Cognos; Native SQL es la traduccion al motor como Oracle o SQL Server.",
+    interview: "Para una consulta lenta revisaria el Cognos SQL, el SQL nativo, joins, filtros, cardinalidad y plan de ejecucion.",
+    example: "Comparar SQL generado para Oracle cuando un reporte de polizas tarda demasiado.",
+    question: "Como revisarias una consulta lenta generada desde Cognos?"
+  },
+  {
+    id: "seguridad-framework-manager",
+    name: "Seguridad en Framework Manager",
+    category: "Cognos Framework Manager",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Control por objeto, filtros de seguridad, grupos, roles y restricciones por sucursal, region o unidad.",
+    interview: "Aplicaria seguridad desde el modelo para limitar informacion sensible y alinear acceso con roles de negocio.",
+    example: "Un usuario regional solo ve polizas y siniestros de su sucursal.",
+    question: "Como implementarias seguridad por sucursal o region?"
+  },
+  {
+    id: "cognos-transformer",
+    name: "IBM Cognos Transformer",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Herramienta de modelado multidimensional para construir PowerCubes.",
+    interview: "Transformer permite definir dimensiones, niveles, jerarquias y medidas, y construir PowerCubes optimizados para analisis OLAP.",
+    example: "Cubo mensual de primas y siniestros por ramo, producto, cobertura y sucursal.",
+    question: "Que diferencia hay entre Framework Manager y Transformer?"
+  },
+  {
+    id: "powercube",
+    name: "PowerCube",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Archivo multidimensional con datos y agregaciones preparados para consulta analitica rapida.",
+    interview: "Un PowerCube acelera analisis OLAP con jerarquias, agregaciones, drill-down y roll-up.",
+    example: "PowerCube de siniestralidad mensual por ramo y region.",
+    question: "Que es un PowerCube?"
+  },
+  {
+    id: "dimensiones-transformer",
+    name: "Dimensiones en Transformer",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Ejes de analisis del cubo, como tiempo, producto, cobertura, cliente, sucursal, intermediario o geografia.",
+    interview: "Las dimensiones permiten navegar medidas desde diferentes perspectivas de negocio.",
+    example: "Analizar prima emitida por ramo, producto, cobertura y mes.",
+    question: "Que dimensiones pondrias en un PowerCube asegurador?"
+  },
+  {
+    id: "jerarquias-niveles-transformer",
+    name: "Jerarquias y niveles",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Organizacion navegable de una dimension en niveles como anio, trimestre, mes y dia.",
+    interview: "Las jerarquias soportan drill-down y roll-up para analizar desde lo general hasta el detalle.",
+    example: "Ramo -> Producto -> Cobertura y Anio -> Trimestre -> Mes -> Dia.",
+    question: "Como se organizan dimensiones, jerarquias y niveles?"
+  },
+  {
+    id: "medidas-transformer",
+    name: "Medidas en Transformer",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Valores numericos que se analizan en un cubo.",
+    interview: "Las medidas representan indicadores como prima emitida, prima devengada, numero de polizas, siniestros o valor indemnizado.",
+    example: "Costo del siniestro, valor indemnizado y numero de reclamaciones.",
+    question: "Que medidas agregarias a un cubo asegurador?"
+  },
+  {
+    id: "dimension-tiempo-cognos",
+    name: "Dimension de tiempo",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Dimension clave para acumulados, comparaciones, anio anterior, crecimiento, tendencias y periodos fiscales.",
+    interview: "La dimension de tiempo permite comparar primas y siniestros por periodos de forma consistente.",
+    example: "Prima emitida mes actual vs mismo mes del anio anterior.",
+    question: "Por que es importante la dimension de tiempo?"
+  },
+  {
+    id: "construccion-powercubes",
+    name: "Construccion de PowerCubes",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Proceso de definir fuentes, dimensiones, medidas, relaciones, construir cubo, revisar errores y publicar.",
+    interview: "Construiria el cubo despues de validar fuentes, dimensiones, medidas y reglas de agregacion.",
+    example: "Crear PowerCube de analisis mensual de polizas vigentes.",
+    question: "Que pasos seguirias para construir un PowerCube?"
+  },
+  {
+    id: "cube-groups-particionamiento",
+    name: "Cube Groups y particionamiento",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Division de cubos por anio, region, compania o linea de negocio para mejorar administracion, tamano y despliegue.",
+    interview: "Particionaria cubos grandes para reducir tamano, facilitar actualizacion y mejorar operacion.",
+    example: "Cubo por anio y ramo para siniestros historicos.",
+    question: "Cuando usarias Cube Groups?"
+  },
+  {
+    id: "despliegue-powercubes",
+    name: "Actualizacion y despliegue de PowerCubes",
+    category: "Cognos Transformer",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Incluye reconstruccion, validacion, copia controlada, activacion, conexiones y pruebas posteriores.",
+    interview: "Desplegaria PowerCubes con control de version, validacion de totales y pruebas posteriores con negocio.",
+    example: "Reconstruir cubo de primas al cierre mensual y validar totales contra Oracle.",
+    question: "Que validarias despues de desplegar un PowerCube?"
+  },
+  {
+    id: "funciones-oracle",
+    name: "Funciones de Oracle",
+    category: "Oracle",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Funciones como NVL, COALESCE, CASE, DECODE, TO_DATE, TO_CHAR, ADD_MONTHS, TRUNC y LAST_DAY para transformar datos.",
+    interview: "Uso funciones Oracle para normalizar nulos, fechas, reglas condicionales y periodos de analisis.",
+    example: "Calcular polizas vigentes y reemplazar primas nulas por cero.",
+    question: "Que funciones de Oracle usarias para preparar datos de seguros?"
+  },
+  {
+    id: "funciones-analiticas-oracle",
+    name: "Funciones analiticas de Oracle",
+    category: "Oracle",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Funciones como ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD y SUM OVER con PARTITION BY.",
+    interview: "Las funciones analiticas permiten comparar periodos, ordenar eventos y calcular acumulados sin perder detalle.",
+    example: "Comparar la prima mensual de cada producto con el periodo anterior usando LAG.",
+    question: "Que funciones analiticas de Oracle has utilizado?"
+  },
+  {
+    id: "vistas-oracle",
+    name: "Vistas en Oracle",
+    category: "Oracle",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Consulta almacenada que expone datos organizados sin duplicarlos fisicamente.",
+    interview: "Una vista simplifica consumo de datos y estandariza reglas sin crear una tabla fisica nueva.",
+    example: "VW_POLIZAS_VIGENTES con filtros de vigencia, estado y producto.",
+    question: "Cuando usarias una vista en Oracle?"
+  },
+  {
+    id: "indices-oracle",
+    name: "Indices en Oracle",
+    category: "Optimizacion SQL",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Estructuras que aceleran busquedas y joins, aunque demasiados indices pueden afectar escrituras.",
+    interview: "Revisaria indices sobre numero de poliza, cliente, fecha, producto y sucursal cuando una consulta es lenta.",
+    example: "Indice sobre fecha de siniestro y codigo de producto para reportes mensuales.",
+    question: "Que columnas indexarias en una tabla de siniestros?"
+  },
+  {
+    id: "plan-ejecucion-oracle",
+    name: "Plan de ejecucion Oracle",
+    category: "Optimizacion SQL",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Permite revisar full table scan, index scan, orden de joins, coste estimado y filas estimadas.",
+    interview: "Para optimizar una consulta primero reviso el plan de ejecucion y valido si los filtros e indices se estan usando.",
+    example: "Detectar un full table scan en FactSiniestros por falta de filtro de fecha.",
+    question: "Que revisarias en un plan de ejecucion?"
+  },
+  {
+    id: "optimizacion-consultas-oracle",
+    name: "Optimizacion de consultas Oracle",
+    category: "Optimizacion SQL",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Buenas practicas para seleccionar columnas necesarias, filtrar temprano, revisar indices, cardinalidad, particiones y conversiones implicitas.",
+    interview: "Evitaria SELECT *, joins sin condicion, funciones innecesarias sobre columnas indexadas y subconsultas repetitivas.",
+    example: "Optimizar consulta de polizas vigentes filtrando por periodo y producto antes de unir dimensiones.",
+    question: "Como optimizarias una consulta Oracle?"
+  },
+  {
+    id: "bind-variables",
+    name: "Bind Variables",
+    category: "Optimizacion SQL",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Parametros reutilizables que evitan concatenacion insegura y pueden favorecer reutilizacion de planes.",
+    interview: "Usaria bind variables para parametrizar fechas, productos o sucursales sin concatenar SQL dinamico inseguro.",
+    example: "Consulta de siniestros entre :fecha_inicio y :fecha_fin.",
+    question: "Para que sirven las bind variables?"
+  },
+  {
+    id: "particionamiento-oracle",
+    name: "Particionamiento Oracle",
+    category: "Optimizacion SQL",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Division de tablas grandes por criterios como fecha para mejorar mantenimiento y consultas.",
+    interview: "Particionaria tablas grandes de siniestros por anio y mes para reducir lecturas en reportes historicos.",
+    example: "FactSiniestros particionada por fecha de movimiento.",
+    question: "Cuando particionarias una tabla Oracle?"
+  },
+  {
+    id: "sql-server",
+    name: "SQL Server",
+    category: "SQL Server",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Motor relacional de Microsoft usado para aplicaciones, integracion, Data Warehouses y soluciones BI.",
+    interview: "SQL Server puede ser fuente o destino analitico para reportes Cognos, procesos ETL y modelos Power BI.",
+    example: "Data Warehouse asegurador en SQL Server con hechos de primas y siniestros.",
+    question: "Que experiencia tienes con SQL Server para BI?"
+  },
+  {
+    id: "t-sql",
+    name: "T-SQL",
+    category: "SQL Server",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Extension de SQL usada en SQL Server con variables, procedimientos, funciones, manejo de errores, temporales y CTE.",
+    interview: "T-SQL permite crear logica reutilizable y consultas analiticas en SQL Server.",
+    example: "Procedimiento que calcula primas mensuales por ramo y sucursal.",
+    question: "Que diferencia hay entre SQL y T-SQL?"
+  },
+  {
+    id: "procedimientos-sql-server",
+    name: "Procedimientos almacenados",
+    category: "SQL Server",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Bloques reutilizables de SQL almacenados en la base de datos.",
+    interview: "Un procedimiento encapsula reglas de negocio, parametros y pasos repetibles para integracion o reporteria.",
+    example: "SP que actualiza tabla Gold de siniestralidad diaria.",
+    question: "Cuando usarias un procedimiento almacenado?"
+  },
+  {
+    id: "indices-planes-sql-server",
+    name: "Indices y planes en SQL Server",
+    category: "SQL Server",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Incluye clustered index, nonclustered index, index seek, index scan y table scan.",
+    interview: "Revisaria el plan para identificar scans costosos y evaluar indices adecuados sin entrar en administracion avanzada.",
+    example: "Index seek por numero de poliza en una consulta de reclamaciones.",
+    question: "Que diferencia hay entre index seek e index scan?"
+  },
+  {
+    id: "oracle-vs-sql-server",
+    name: "Oracle vs SQL Server",
+    category: "SQL Server",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Ambos son relacionales, pero Oracle usa SQL/PLSQL y SQL Server usa SQL/T-SQL; funciones, fechas, nulos y sintaxis pueden cambiar.",
+    interview: "No asumo que una consulta corre igual en ambos motores; ajusto funciones, paginacion, fechas y logica procedural.",
+    example: "NVL en Oracle puede cambiarse por ISNULL o COALESCE en SQL Server segun el caso.",
+    question: "Que diferencias basicas existen entre Oracle y SQL Server?"
+  },
+  {
+    id: "poliza",
+    name: "Poliza",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Contrato de seguro con condiciones, vigencia, coberturas, asegurados y primas.",
+    interview: "La poliza es una entidad central del modelo asegurador y suele conectarse con primas, coberturas, tomador y siniestros.",
+    example: "FactPolizas con una fila por poliza, cobertura y periodo.",
+    question: "Que informacion contiene una poliza?"
+  },
+  {
+    id: "asegurado-tomador-beneficiario",
+    name: "Asegurado, tomador y beneficiario",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Asegurado es quien esta protegido; tomador contrata el seguro; beneficiario recibe el beneficio cuando corresponde.",
+    interview: "Diferenciar estos roles evita errores de modelado y filtros incorrectos en reportes aseguradores.",
+    example: "Una empresa puede ser tomador, un empleado asegurado y su familia beneficiaria.",
+    question: "Que diferencia hay entre asegurado, tomador y beneficiario?"
+  },
+  {
+    id: "prima-seguro",
+    name: "Prima",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Valor pagado o generado por la cobertura del seguro.",
+    interview: "La prima es una medida clave para ingresos y puede analizarse como emitida, devengada, cobrada o anulada segun negocio.",
+    example: "Prima emitida mensual por ramo, producto y canal.",
+    question: "Que diferencia hay entre prima emitida y prima devengada?"
+  },
+  {
+    id: "cobertura-deducible",
+    name: "Cobertura y deducible",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Cobertura son riesgos cubiertos; deducible es la parte del costo que asume el asegurado.",
+    interview: "Cobertura y deducible influyen en analisis de riesgo, costo de siniestros y rentabilidad.",
+    example: "Cobertura de danos a terceros con deducible definido en la poliza.",
+    question: "Como afectaria el deducible al analisis de siniestros?"
+  },
+  {
+    id: "siniestro",
+    name: "Siniestro",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Evento reportado que puede activar una cobertura.",
+    interview: "El siniestro se modela como evento medible con fechas, estado, cobertura, costo e indemnizacion.",
+    example: "FactSiniestros con una fila por siniestro, cobertura y movimiento.",
+    question: "Que granularidad tendria una tabla de hechos de siniestros?"
+  },
+  {
+    id: "indemnizacion",
+    name: "Indemnizacion",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Valor reconocido o pagado por la aseguradora cuando aplica una cobertura.",
+    interview: "La indemnizacion permite medir costo de siniestros y analizar severidad o rentabilidad.",
+    example: "Valor indemnizado por ramo, producto, region y mes.",
+    question: "Como analizarias el valor indemnizado?"
+  },
+  {
+    id: "vigencia-renovacion-cancelacion",
+    name: "Vigencia, renovacion y cancelacion",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Vigencia es el periodo de cobertura; renovacion es continuidad; cancelacion es terminacion de la poliza.",
+    interview: "Estos conceptos soportan indicadores de polizas vigentes, renovacion, cancelacion y persistencia.",
+    example: "Calcular polizas activas al cierre de mes y renovaciones por canal.",
+    question: "Como calcularias polizas vigentes?"
+  },
+  {
+    id: "ramo-producto-seguro",
+    name: "Ramo y producto",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Clasificacion del negocio asegurador, como vida, salud, autos, hogar o riesgos laborales.",
+    interview: "Ramo y producto son dimensiones clave para analizar prima, siniestralidad, renovacion y rentabilidad.",
+    example: "Ramo Autos, producto Todo Riesgo, cobertura danos propios.",
+    question: "Por que ramo y producto son importantes en BI asegurador?"
+  },
+  {
+    id: "polizas-vigentes",
+    name: "Polizas vigentes",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Cantidad de polizas activas durante un periodo segun fecha de inicio, fin, estado y reglas de negocio.",
+    interview: "Aclararia siempre la fecha de corte y reglas de negocio antes de comparar polizas vigentes.",
+    example: "Polizas activas al cierre de junio por ramo y sucursal.",
+    question: "Como calcularias polizas vigentes?"
+  },
+  {
+    id: "prima-emitida",
+    name: "Prima emitida",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Valor de primas generadas por polizas emitidas; la definicion exacta depende de reglas contables y negocio.",
+    interview: "Validaria prima emitida contra fuente oficial, filtros, moneda, anulaciones y fecha de corte.",
+    example: "Prima emitida mensual por ramo, producto e intermediario.",
+    question: "Que validarias en una medida de prima emitida?"
+  },
+  {
+    id: "prima-devengada",
+    name: "Prima devengada",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Parte de la prima correspondiente al periodo de cobertura ya transcurrido.",
+    interview: "La prima devengada requiere entender vigencia, periodo contable y regla de devengo definida por la aseguradora.",
+    example: "Devengar proporcionalmente prima durante los meses de vigencia.",
+    question: "Que diferencia existe entre prima emitida y prima devengada?"
+  },
+  {
+    id: "frecuencia-siniestros",
+    name: "Frecuencia de siniestros",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Relacion entre cantidad de siniestros y exposicion, polizas o riesgos asegurados.",
+    interview: "Aclararia el denominador usado por negocio antes de comparar frecuencia entre productos.",
+    example: "Siniestros por cada mil polizas vigentes.",
+    question: "Que mide la frecuencia de siniestros?"
+  },
+  {
+    id: "severidad-siniestros",
+    name: "Severidad",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Costo promedio de los siniestros segun definicion de costos y pagos utilizada.",
+    interview: "La severidad ayuda a identificar productos o regiones con siniestros mas costosos.",
+    example: "Costo promedio de siniestros de autos por ciudad.",
+    question: "Como calcularias severidad?"
+  },
+  {
+    id: "siniestralidad",
+    name: "Siniestralidad",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Relacion entre costos de siniestros y primas, usando definiciones acordadas por la aseguradora.",
+    interview: "Siniestralidad debe calcularse con reglas de negocio claras sobre primas, costos, periodos y moneda.",
+    example: "Costo de siniestros / prima devengada por ramo.",
+    question: "Que es la siniestralidad?"
+  },
+  {
+    id: "tasa-renovacion",
+    name: "Tasa de renovacion",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Porcentaje de polizas que continuan despues de finalizar su vigencia.",
+    interview: "La tasa de renovacion mide persistencia y puede analizarse por canal, intermediario, ramo o segmento.",
+    example: "Renovaciones de autos por intermediario y mes.",
+    question: "Como medirias renovacion de polizas?"
+  },
+  {
+    id: "cancelacion-polizas",
+    name: "Cancelacion de polizas",
+    category: "BI Asegurador",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Cantidad o proporcion de polizas canceladas segun periodo y regla de negocio.",
+    interview: "Analizaria cancelaciones por motivo, canal, producto, sucursal y antiguedad.",
+    example: "Cancelaciones mensuales de polizas de salud por canal.",
+    question: "Que indicador construirias para cancelaciones?"
+  },
+  {
+    id: "migracion-cognos-power-bi",
+    name: "Migracion o coexistencia Cognos-Power BI",
+    category: "Power BI",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Proceso para mantener soluciones Cognos existentes mientras se construyen o migran reportes hacia Power BI.",
+    interview: "Inventario reportes Cognos, identifico package o PowerCube, documento medidas y filtros, localizo fuentes, construyo modelo Power BI y concilio resultados.",
+    example: "Migrar reporte de siniestralidad desde Cognos a Power BI usando tablas curadas del Data Warehouse.",
+    question: "Como migrarias un reporte Cognos hacia Power BI?"
+  },
+  {
+    id: "reconciliacion-cognos-power-bi",
+    name: "Reconciliacion Cognos vs Power BI",
+    category: "Soporte BI",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Validacion de conteos, sumas, filtros, fechas, monedas, duplicados, seguridad y totales entre Cognos y Power BI.",
+    interview: "No validaria solo visualmente; compararia SQL, filtros, fecha de corte, granularidad, medidas y seguridad.",
+    example: "Comparar suma de prima y numero de siniestros por ramo, sucursal y mes.",
+    question: "Como validarias que Cognos y Power BI muestran los mismos totales?"
+  },
+  {
+    id: "soporte-bi",
+    name: "Soporte BI",
+    category: "Soporte BI",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Atencion y resolucion de problemas relacionados con datos, modelos, ETL y reportes.",
+    interview: "En soporte BI reproduzco el caso, reviso fuente, ETL, modelo, seguridad, refresh y reporte antes de corregir.",
+    example: "Usuario reporta diferencia de prima entre Cognos y Power BI.",
+    question: "Como investigarias un reporte con datos incorrectos?"
+  },
+  {
+    id: "analisis-causa-raiz-bi",
+    name: "Analisis de causa raiz",
+    category: "Soporte BI",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Proceso para identificar si un error nace en fuente, ETL, modelo dimensional, package, PowerCube, consulta, modelo semantico, reporte o permisos.",
+    interview: "Aislo el problema por capas para no corregir el reporte si la causa esta en la fuente o en el ETL.",
+    example: "La prima no coincide por filtro de fecha distinto entre package y modelo Power BI.",
+    question: "Como haces analisis de causa raiz en BI?"
+  },
+  {
+    id: "incidente-datos-bi",
+    name: "Incidente de datos",
+    category: "Soporte BI",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Problema donde el dato reportado no coincide con lo esperado o con una fuente autorizada.",
+    interview: "Reproduciria, identificaria filtros, compararia fuente, validaria ETL, granularidad, relaciones, medidas y documentaria la causa.",
+    example: "El total de prima en Power BI no coincide con Cognos para la misma fecha de corte.",
+    question: "Como resolverias un incidente de datos?"
+  },
+  {
+    id: "sla-soporte-bi",
+    name: "SLA de soporte",
+    category: "Soporte BI",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Compromiso sobre tiempos de atencion, solucion o disponibilidad de un servicio o reporte.",
+    interview: "Priorizaria incidentes segun impacto, criticidad, usuarios afectados y SLA acordado.",
+    example: "Reporte de cierre mensual debe estar validado antes de las 8:00 a. m.",
+    question: "Que es un SLA de soporte?"
+  },
+  {
+    id: "evidencia-tecnica-bi",
+    name: "Evidencia tecnica",
+    category: "Soporte BI",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Registro de capturas, SQL, parametros, fecha de corte, resultados, logs, causa y solucion.",
+    interview: "Documentar evidencia permite trazabilidad y facilita validacion con negocio o soporte tecnico.",
+    example: "SQL usado para validar prima, resultado esperado, resultado obtenido y log del JobStream.",
+    question: "Que evidencia guardarias en un incidente BI?"
+  },
+  {
+    id: "scrum",
+    name: "Scrum",
+    category: "Scrum",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Marco agil para organizar trabajo en ciclos cortos llamados Sprints.",
+    interview: "Scrum ayuda a priorizar requerimientos BI, entregar incrementos y validar reportes con usuarios de negocio.",
+    example: "Sprint para construir dashboard de siniestralidad por ramo.",
+    question: "Como trabajarias un requerimiento BI bajo Scrum?"
+  },
+  {
+    id: "sprint",
+    name: "Sprint",
+    category: "Scrum",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Periodo de trabajo con objetivo definido.",
+    interview: "Durante el Sprint se desarrollan, prueban y validan elementos priorizados del backlog.",
+    example: "Sprint de dos semanas para entregar modelo de primas y dashboard inicial.",
+    question: "Que es un Sprint?"
+  },
+  {
+    id: "product-backlog",
+    name: "Product Backlog",
+    category: "Scrum",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Lista priorizada de necesidades, mejoras, errores y funcionalidades.",
+    interview: "El Product Backlog permite ordenar solicitudes BI por valor, urgencia y dependencia tecnica.",
+    example: "Historias para siniestralidad, renovacion, seguridad por region y conciliacion Cognos.",
+    question: "Que contiene un Product Backlog?"
+  },
+  {
+    id: "sprint-backlog",
+    name: "Sprint Backlog",
+    category: "Scrum",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Elementos seleccionados para desarrollar durante el Sprint.",
+    interview: "El Sprint Backlog aterriza el compromiso del equipo para el ciclo actual.",
+    example: "Crear medidas DAX, validar SQL y publicar version de prueba del reporte.",
+    question: "Que diferencia hay entre Product Backlog y Sprint Backlog?"
+  },
+  {
+    id: "historia-usuario-bi",
+    name: "Historia de usuario BI",
+    category: "Scrum",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Formato que expresa quien necesita algo, que necesita y para que.",
+    interview: "Una buena historia BI conecta necesidad de negocio, indicador, filtros y valor esperado.",
+    example: "Como analista de seguros quiero consultar siniestralidad por ramo para identificar productos con desviaciones.",
+    question: "Que debe contener una historia de usuario?"
+  },
+  {
+    id: "criterios-aceptacion-bi",
+    name: "Criterios de aceptacion",
+    category: "Scrum",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Condiciones verificables que debe cumplir una solucion.",
+    interview: "Definiria criterios como filtros requeridos, coincidencia con Oracle, seguridad por region y horario de actualizacion.",
+    example: "El reporte filtra por fecha y ramo, totales coinciden con Oracle y acceso esta restringido por region.",
+    question: "Que criterios aplicarias para considerar terminado un reporte?"
+  },
+  {
+    id: "definition-of-done-bi",
+    name: "Definition of Done",
+    category: "Scrum",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Condiciones para considerar terminada una tarea: desarrollo, pruebas, conciliacion, documentacion y aprobacion funcional.",
+    interview: "Un reporte no esta terminado solo por verse bien; debe estar validado, documentado, conciliado y aprobado.",
+    example: "Consulta validada, datos conciliados, RLS probado, documentacion actualizada y aprobacion de negocio.",
+    question: "Que incluirias en la Definition of Done de un reporte BI?"
+  },
+  {
+    id: "eventos-roles-scrum",
+    name: "Eventos y roles de Scrum",
+    category: "Scrum",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Incluye Sprint Planning, Daily Scrum, Sprint Review, Retrospective, Product Owner, Scrum Master y Developers.",
+    interview: "Entiendo los eventos y roles para participar en ceremonias, aclarar requerimientos y mostrar avances BI.",
+    example: "Sprint Review para demostrar dashboard de primas y recibir feedback de negocio.",
+    question: "Que eventos y roles principales tiene Scrum?"
+  },
+  {
+    id: "comparaciones-rapidas-minsait",
+    name: "Comparaciones rapidas Minsait",
+    category: "IBM Cognos",
+    roles: ["Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Comparaciones utiles: Data Manager vs Framework Manager, Package vs PowerCube, Cognos SQL vs SQL nativo, Oracle vs SQL Server y Cognos vs Power BI.",
+    interview: "Data Manager mueve datos, Framework Manager los modela semanticamente, Transformer crea cubos y Power BI visualiza con modelos semanticos.",
+    example: "Diferenciar incidente vs requerimiento, Fact Build vs Dimension Build, Full load vs delta load, drill-down vs roll-up.",
+    question: "Como explicarias Cognos Data Manager vs Framework Manager vs Transformer?"
   },
   {
     id: "modelo-semantico-power-bi",

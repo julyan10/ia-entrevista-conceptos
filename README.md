@@ -27,6 +27,7 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 - Ruta Ingeniero de Datos y BI - Pint Pharma con pipelines, Azure Data Factory, Data Lake, Databricks, Delta Lake, modelo estrella, DAX, Power BI, particiones y calidad de datos.
 - Ejemplo de alto detalle para migrar PostgreSQL a Microsoft Fabric con OneLake, Lakehouse, Warehouse, PySpark, validaciones y Power BI.
 - Comparacion clara entre Data Lake, Lakehouse y Data Warehouse con frase lista para entrevista.
+- Ruta Analista Power BI - Minsait Aseguradora con IBM Cognos, Power BI, Oracle, SQL Server, ETL, modelado dimensional, soporte BI, Scrum e indicadores aseguradores.
 - Tema claro y oscuro.
 
 ## Cómo abrirlo
