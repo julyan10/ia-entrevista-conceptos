@@ -1367,6 +1367,50 @@ const additionalRoleConcepts = [
     question: "Como validarias que una migracion fue exitosa?"
   },
   {
+    id: "migracion-postgresql-fabric",
+    name: "Migracion PostgreSQL a Fabric",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Avanzado",
+    explanation: "Proceso para llevar datos analiticos desde PostgreSQL hacia OneLake, Lakehouse, Warehouse y Power BI.",
+    interview: "Migraria PostgreSQL a Fabric separando la carga transaccional de la analitica, usando Bronze/Silver/Gold, validaciones y ejecucion paralela.",
+    example: "Ventas, clientes y productos salen de PostgreSQL, llegan a OneLake, se limpian con PySpark y se publican en Power BI.",
+    question: "Como migrarias PostgreSQL a Fabric sin romper reportes existentes?"
+  },
+  {
+    id: "copy-activity-postgresql-fabric",
+    name: "Copy Activity PostgreSQL",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Intermedio",
+    explanation: "Actividad de Fabric Data Factory para copiar datos desde PostgreSQL hacia destinos analiticos como Lakehouse o Warehouse.",
+    interview: "Usaria Copy Activity para cargas batch o incrementales, definiendo conexion, tabla o query, mapeo, particionamiento y monitoreo.",
+    example: "Copiar public.orders con filtro updated_at hacia una tabla Bronze en Lakehouse.",
+    question: "Cuando usarias Copy Activity en vez de un notebook?"
+  },
+  {
+    id: "mirroring-postgresql-fabric",
+    name: "Mirroring PostgreSQL en Fabric",
+    category: "Microsoft Fabric",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Avanzado",
+    explanation: "Replica de baja latencia para llevar cambios de PostgreSQL a OneLake sin construir ETL complejo para cada tabla.",
+    interview: "Mirroring es util cuando se requieren datos casi en tiempo real; para transformaciones fuertes mantendria capas Silver y Gold sobre la replica.",
+    example: "Replicar tablas de ventas y pagos desde PostgreSQL hacia Fabric para dashboards operativos.",
+    question: "Que diferencia hay entre Mirroring y un pipeline batch?"
+  },
+  {
+    id: "validacion-paralela-migracion",
+    name: "Validacion paralela de migracion",
+    category: "Calidad de datos",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma"],
+    level: "Avanzado",
+    explanation: "Comparar origen y destino durante un periodo antes del go-live para asegurar que datos, KPIs y reportes coinciden.",
+    interview: "Antes de apagar reportes antiguos, ejecutaria paralelo: conteos, sumas de control, integridad referencial, KPIs y pruebas con usuarios.",
+    example: "Comparar ventas por dia en PostgreSQL contra Warehouse Gold durante cuatro semanas.",
+    question: "Como validarias que una migracion fue exitosa?"
+  },
+  {
     id: "dataflows-gen2",
     name: "Dataflows Gen2",
     category: "Microsoft Fabric",
