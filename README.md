@@ -12,6 +12,7 @@ Página web estática para repasar conceptos de IA, agentes, RAG, bases de datos
 - Sección de caso práctico SaaS B2B AI-first: problema, priorización, arquitectura, MVP, riesgos y métricas.
 - Sección con dos ejemplos aplicados: RAG y Text2SQL.
 - Conceptos de Power BI: Importación, DirectQuery y Conexión en vivo.
+- Sección de medidas DAX con ALL, ALLEXCEPT, ALLSELECTED, FILTER, SUMX, DIVIDE, Time Intelligence y ejemplos de seguros.
 - Sección final simplificada con programas y herramientas clave de datos.
 - Ejemplo aplicado de pipeline con ERP, APIs, Data Lake, PySpark, SQL, BI e IA.
 - Ejemplo detallado de implementación en Azure con Data Factory, Data Lake Gen2, Databricks, Azure SQL, Power BI y Azure OpenAI.

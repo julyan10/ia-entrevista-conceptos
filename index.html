@@ -23,6 +23,7 @@
           </button>
           <a class="nav-link" href="#arquitectura-agente">Agente IA</a>
           <a class="nav-link" href="#rutas-cargo">Rutas</a>
+          <a class="nav-link" href="#medidas-dax">DAX</a>
           <a class="nav-link" href="#conceptos">Conceptos</a>
           <a class="nav-link" href="#repaso">Repaso</a>
           <a class="nav-link" href="#caso-saas">Caso SaaS</a>
@@ -361,6 +362,119 @@
           permitiria crear PowerCubes con dimensiones, jerarquias y medidas. Finalmente, Power BI puede consumir las
           tablas curadas para construir modelos semanticos, medidas DAX y dashboards, validando siempre que los resultados
           coincidan con las fuentes y con los reportes existentes.
+        </div>
+      </section>
+
+      <section class="dax-measures-section" id="medidas-dax" aria-labelledby="medidas-dax-title">
+        <div class="section-heading">
+          <p class="eyebrow">Power BI practico</p>
+          <h2 id="medidas-dax-title">Medidas DAX que suelen preguntar en entrevista</h2>
+        </div>
+
+        <div class="dax-measure-grid">
+          <article class="dax-card">
+            <span class="category-pill">Concepto base</span>
+            <h3>Medida vs columna calculada</h3>
+            <p>
+              Una medida se calcula segun el contexto del visual, filtros y segmentadores. Una columna calculada se
+              materializa fila por fila en el modelo. En entrevista, normalmente conviene usar medidas para KPIs.
+            </p>
+            <pre class="sql-box"><code>Total Prima = SUM(FactPrimas[PrimaEmitida])</code></pre>
+          </article>
+
+          <article class="dax-card">
+            <span class="category-pill">Funcion clave</span>
+            <h3>ALL</h3>
+            <p>
+              `ALL` elimina filtros de una tabla o columna. Se usa mucho para calcular porcentajes sobre el total,
+              rankings o comparaciones ignorando un filtro especifico.
+            </p>
+            <pre class="sql-box"><code>% Prima Total =
+DIVIDE(
+    [Total Prima],
+    CALCULATE([Total Prima], ALL(DimProducto))
+)</code></pre>
+          </article>
+
+          <article class="dax-card">
+            <span class="category-pill">Control de filtros</span>
+            <h3>ALL vs ALLEXCEPT vs ALLSELECTED</h3>
+            <p>
+              `ALL` quita filtros, `ALLEXCEPT` conserva algunos filtros y `ALLSELECTED` respeta la seleccion visible del
+              usuario. La clave es explicar que todas modifican el contexto de filtro.
+            </p>
+            <pre class="sql-box"><code>Prima Ramo =
+CALCULATE(
+    [Total Prima],
+    ALLEXCEPT(DimProducto, DimProducto[Ramo])
+)</code></pre>
+          </article>
+
+          <article class="dax-card">
+            <span class="category-pill">Iteradores</span>
+            <h3>SUMX</h3>
+            <p>
+              `SUMX` evalua una expresion fila por fila y luego suma el resultado. Sirve cuando el calculo no es una
+              suma directa de una columna.
+            </p>
+            <pre class="sql-box"><code>Prima Neta =
+SUMX(
+    FactPrimas,
+    FactPrimas[PrimaEmitida] - FactPrimas[Descuento]
+)</code></pre>
+          </article>
+        </div>
+
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <caption>Funciones DAX para explicar rapido</caption>
+            <thead>
+              <tr>
+                <th>Funcion</th>
+                <th>Para que sirve</th>
+                <th>Ejemplo de entrevista</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>CALCULATE</td><td>Recalcula una medida cambiando filtros.</td><td>Prima del anio anterior o solo polizas vigentes.</td></tr>
+              <tr><td>ALL</td><td>Quita filtros de tabla o columna.</td><td>Participacion de prima por producto sobre el total.</td></tr>
+              <tr><td>ALLEXCEPT</td><td>Quita filtros excepto los indicados.</td><td>Mantener ramo y quitar filtros de producto.</td></tr>
+              <tr><td>ALLSELECTED</td><td>Respeta la seleccion visible del usuario.</td><td>Porcentaje sobre el total seleccionado en el reporte.</td></tr>
+              <tr><td>FILTER</td><td>Construye una tabla filtrada para CALCULATE o iteradores.</td><td>Polizas vigentes segun fechas de inicio y fin.</td></tr>
+              <tr><td>SUMX</td><td>Itera filas y suma una expresion.</td><td>Prima neta = prima emitida menos descuentos.</td></tr>
+              <tr><td>DIVIDE</td><td>Divide evitando errores por cero.</td><td>Siniestralidad = costo siniestros / prima devengada.</td></tr>
+              <tr><td>DATESYTD</td><td>Calcula acumulados del anio.</td><td>Prima acumulada YTD.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="dax-code-grid">
+          <div>
+            <h3>Medidas aseguradoras</h3>
+            <pre class="sql-box"><code>Total Siniestros = SUM(FactSiniestros[CostoSiniestro])
+
+Siniestralidad =
+DIVIDE([Total Siniestros], [Prima Devengada])
+
+Polizas Vigentes =
+CALCULATE(
+    DISTINCTCOUNT(FactPolizas[PolizaId]),
+    FILTER(
+        FactPolizas,
+        FactPolizas[FechaInicio] <= MAX(DimFecha[Fecha]) &&
+        FactPolizas[FechaFin] >= MAX(DimFecha[Fecha])
+    )
+)</code></pre>
+          </div>
+          <div>
+            <h3>Respuesta fuerte</h3>
+            <p>
+              "En DAX siempre parto del contexto de filtro. Si necesito cambiar ese contexto uso CALCULATE. Si quiero
+              calcular participacion contra un total uso ALL o ALLSELECTED segun si debo ignorar todos los filtros o
+              respetar la seleccion del usuario. Para divisiones uso DIVIDE y para calculos fila por fila uso iteradores
+              como SUMX."
+            </p>
+          </div>
         </div>
       </section>
 

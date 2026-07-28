@@ -1568,6 +1568,105 @@ const additionalRoleConcepts = [
     question: "¿Cómo implementarías RLS?"
   },
   {
+    id: "medidas-vs-columnas-dax",
+    name: "Medidas vs columnas calculadas en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Una medida se calcula dinamicamente segun filtros del reporte; una columna calculada se calcula fila por fila y queda almacenada en el modelo.",
+    interview: "Para KPIs uso medidas porque responden al contexto del visual; uso columnas calculadas cuando necesito un atributo fila a fila para relacionar, segmentar o clasificar.",
+    example: "Total Prima = SUM(FactPrimas[PrimaEmitida]) como medida; SegmentoPrima como columna calculada.",
+    question: "Que diferencia hay entre una medida y una columna calculada?"
+  },
+  {
+    id: "all-dax",
+    name: "ALL en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Funcion que elimina filtros de una tabla o columna para recalcular una medida contra un total mas amplio.",
+    interview: "ALL se usa cuando necesito ignorar filtros, por ejemplo para calcular participacion de prima por producto contra el total general.",
+    example: "% Prima Total = DIVIDE([Total Prima], CALCULATE([Total Prima], ALL(DimProducto))).",
+    question: "Para que sirve ALL en DAX?"
+  },
+  {
+    id: "allexcept-dax",
+    name: "ALLEXCEPT en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Funcion que elimina filtros de una tabla excepto las columnas indicadas.",
+    interview: "ALLEXCEPT sirve cuando quiero mantener un nivel de analisis, como ramo, pero quitar filtros mas detallados como producto o cobertura.",
+    example: "Prima Ramo = CALCULATE([Total Prima], ALLEXCEPT(DimProducto, DimProducto[Ramo])).",
+    question: "Que diferencia hay entre ALL y ALLEXCEPT?"
+  },
+  {
+    id: "allselected-dax",
+    name: "ALLSELECTED en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Avanzado",
+    explanation: "Funcion que conserva la seleccion visible del usuario y elimina filtros internos del visual.",
+    interview: "ALLSELECTED es util para calcular porcentajes sobre lo que el usuario selecciono en el reporte, no necesariamente sobre todo el modelo.",
+    example: "% Prima Seleccionada = DIVIDE([Total Prima], CALCULATE([Total Prima], ALLSELECTED(DimProducto))).",
+    question: "Cuando usarias ALLSELECTED en lugar de ALL?"
+  },
+  {
+    id: "filter-dax",
+    name: "FILTER en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Funcion que devuelve una tabla filtrada a partir de una condicion.",
+    interview: "FILTER permite construir condiciones mas expresivas dentro de CALCULATE, especialmente cuando el filtro depende de fechas, estados o comparaciones.",
+    example: "Polizas vigentes filtrando FechaInicio <= fecha seleccionada y FechaFin >= fecha seleccionada.",
+    question: "Para que sirve FILTER dentro de CALCULATE?"
+  },
+  {
+    id: "sumx-dax",
+    name: "SUMX en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Iterador que evalua una expresion fila por fila y luego suma los resultados.",
+    interview: "Uso SUMX cuando el calculo no es una simple suma de columna, sino una expresion por registro.",
+    example: "Prima Neta = SUMX(FactPrimas, FactPrimas[PrimaEmitida] - FactPrimas[Descuento]).",
+    question: "Cuando usarias SUMX en lugar de SUM?"
+  },
+  {
+    id: "divide-dax",
+    name: "DIVIDE en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Basico",
+    explanation: "Funcion para dividir de forma segura controlando divisiones por cero o valores en blanco.",
+    interview: "Prefiero DIVIDE sobre el operador / cuando el denominador puede ser cero, como en tasas o porcentajes.",
+    example: "Siniestralidad = DIVIDE([Total Siniestros], [Prima Devengada]).",
+    question: "Por que usar DIVIDE en medidas DAX?"
+  },
+  {
+    id: "time-intelligence-dax",
+    name: "Time Intelligence en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Funciones para comparar periodos, calcular acumulados, anio anterior, mes anterior o YTD usando una tabla calendario.",
+    interview: "Para Time Intelligence necesito una tabla calendario bien marcada y relaciones correctas con las fechas del modelo.",
+    example: "Prima YTD = TOTALYTD([Total Prima], DimFecha[Fecha]).",
+    question: "Que necesitas para que funciones de tiempo en DAX funcionen bien?"
+  },
+  {
+    id: "variables-dax",
+    name: "Variables VAR en DAX",
+    category: "Power BI",
+    roles: ["Ingeniero de Datos y BI - Pint Pharma", "Analista Power BI - Minsait Aseguradora"],
+    level: "Intermedio",
+    explanation: "Variables que guardan resultados intermedios para mejorar lectura, mantenimiento y a veces rendimiento de una medida.",
+    interview: "Uso VAR para dividir medidas complejas en pasos claros y evitar repetir expresiones.",
+    example: "VAR PrimaActual = [Total Prima] RETURN DIVIDE(PrimaActual, [Prima Total]).",
+    question: "Para que sirven las variables en DAX?"
+  },
+  {
     id: "actualizacion-incremental-power-bi",
     name: "Actualización incremental en Power BI",
     category: "Power BI",

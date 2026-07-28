@@ -640,6 +640,54 @@ textarea:focus {
   line-height: 1.55;
 }
 
+.dax-measure-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.dax-card {
+  display: grid;
+  gap: 13px;
+  align-content: start;
+  min-width: 0;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  box-shadow: 0 10px 30px rgba(23, 33, 29, 0.06);
+}
+
+.dax-card h3,
+.dax-card p,
+.dax-code-grid h3,
+.dax-code-grid p {
+  margin: 0;
+}
+
+.dax-card p,
+.dax-code-grid p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.dax-code-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.dax-code-grid > div {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(23, 33, 29, 0.06);
+}
+
 .agent-flow {
   display: grid;
   grid-template-columns: repeat(13, minmax(126px, 1fr));
@@ -1439,6 +1487,8 @@ textarea:focus {
   .role-comparison-grid,
   .cognos-tool-grid,
   .insurance-kpi-grid,
+  .dax-measure-grid,
+  .dax-code-grid,
   .case-priority-grid,
   .case-columns,
   .model-ladder,
